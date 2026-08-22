@@ -1,7 +1,16 @@
 #!/bin/bash
 # 點兩下就把網站更新到線上，然後打開給妳看。
 # 只有一個網站、一個按鈕：妳看到的就是家人看到的。
-cd "$(dirname "$0")" || exit 1
+# 透過桌面捷徑執行時，$0 會是捷徑的位置，要先解開才找得到專案資料夾
+SELF="$0"
+while [ -L "$SELF" ]; do
+  LINK="$(readlink "$SELF")"
+  case "$LINK" in
+    /*) SELF="$LINK" ;;
+     *) SELF="$(dirname "$SELF")/$LINK" ;;
+  esac
+done
+cd "$(dirname "$SELF")" || exit 1
 
 clear
 echo "════════════════════════════════════════════"
