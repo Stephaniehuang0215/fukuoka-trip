@@ -24,16 +24,31 @@
 5. **`convert.py`** 是把 `.dc.html` 轉成 `index.html` 的腳本。如果之後在 Claude Design 改了設計稿，
    重新下載 `.dc.html` 後跑 `python3 convert.py` 就能重新產生，不用手改 HTML。
 
-## 本機預覽
+## 更新網站
+
+在 Finder 打開 `~/Projects/fukuoka-trip`，**點兩下 `更新網站.command`**。
+
+它會做三件事，然後自動打開網站給你看：
+1. 更新線上網站（`fukuoka-trip-7d3.pages.dev`）
+2. 備份到 GitHub 私人 repo
+3. 打開瀏覽器確認
+
+只有一個網站。你在瀏覽器看到的，就是家人看到的。
+
+出錯時它會用中文說明原因，而且**線上網站會維持上一次成功的版本**，不會壞給家人看。
+
+## 隱私設定（刻意的）
+
+| 措施 | 為什麼 |
+|------|--------|
+| `noindex` + `robots.txt` | 站上有家人照片，以及飯店地址、電話、班機時間——等於公告「這家人這五天不在家」。知道網址的人進得來就好，不要被 Google 搜到。 |
+| GitHub 私人 repo | 同上 |
+| 只上傳 `dist/` | 原始設計稿、`convert.py` 不需要公開 |
+
+旅程結束（2026-08-30）後建議下架，或改成拿掉飯店與班機資訊的紀念版。
+
+## 給工程師：本機預覽
 
 ```bash
-cd ~/Projects/fukuoka-trip
-python3 -m http.server 8899
-# 打開 http://localhost:8899
-```
-
-## 之後想上線
-
-```bash
-npx wrangler pages deploy . --project-name fukuoka-trip
+python3 -m http.server 8899   # http://localhost:8899
 ```
