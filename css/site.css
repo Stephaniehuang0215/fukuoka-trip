@@ -1,0 +1,85 @@
+/* site.css — 取代 Claude Design 執行期元件的靜態實作
+   1. .nav-btn      分頁按鈕（原本由 navStyle() 產生的 inline style）
+   2. .tab-panel    分頁顯示／隱藏（原本的 <sc-if>）
+   3. .img-slot     圖片框與「尚未放圖」佔位（原本的 <image-slot>） */
+
+/* ── 分頁按鈕 ───────────────────────────────────────────── */
+.nav-btn {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-text);
+  transition: background .15s ease, color .15s ease;
+  white-space: nowrap;
+}
+.nav-btn:hover { background: color-mix(in srgb, var(--color-accent) 14%, transparent); }
+.nav-btn[aria-current="page"] { background: var(--color-accent); color: var(--color-bg); }
+.nav-btn[aria-current="page"]:hover { background: var(--color-accent-600); }
+
+#zoom-in, #zoom-out { transition: background .15s ease; }
+#zoom-in:hover, #zoom-out:hover { background: color-mix(in srgb, var(--color-text) 8%, transparent); }
+
+/* ── 分頁切換 ───────────────────────────────────────────── */
+.tab-panel { display: none; }
+.tab-panel.is-active { display: block; animation: panel-in .22s ease both; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .tab-panel.is-active { animation: none; } }
+
+/* ── 首頁日程卡片 ───────────────────────────────────────── */
+[data-go] { transition: transform .15s ease, box-shadow .15s ease; }
+div[data-go]:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+/* ── 圖片框 ─────────────────────────────────────────────── */
+.img-slot {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-neutral-200);
+}
+.img-slot img { width: 100%; height: 100%; }
+
+/* 還沒放圖時顯示虛線佔位框＋說明文字 */
+.img-slot.is-empty {
+  display: grid;
+  place-items: center;
+  /* 蓋掉設計稿給的實際尺寸，避免空框佔掉整個版面 */
+  aspect-ratio: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 160px;
+  max-height: 240px;
+  background: color-mix(in srgb, var(--color-surface) 70%, var(--color-bg));
+  border: 1.5px dashed color-mix(in srgb, var(--color-text) 22%, transparent);
+}
+.img-slot.is-empty::after {
+  content: "🖼 " attr(data-placeholder);
+  font-size: 13px;
+  padding: 0 var(--space-3);
+  text-align: center;
+  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+}
+
+/* ── 響應式 ─────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .rwd-2col { grid-template-columns: 1fr !important; }
+  h1 { font-size: 32px !important; }
+  h2 { font-size: 24px !important; }
+  .img-slot { width: 100% !important; height: auto !important; max-height: 70vh; }
+}
+
+/* ── 標題裡的阿拉伯數字 ──
+   設計稿的標題字體 Caprasimo 沒有中文字，中文會退回系統字體，
+   但它「有」阿拉伯數字，所以「福岡市7大行政區域地圖」的 7 會變成裝飾體，
+   跟旁邊的中文長得不一樣。這裡只把數字 0-9 抽出來交給系統字體，
+   標題的英文與整體造型不受影響。 */
+@font-face {
+  font-family: "HeadingNumerals";
+  src: local("Helvetica Neue"), local("Helvetica"), local("Arial"), local("PingFang TC");
+  unicode-range: U+0030-0039;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "HeadingNumerals", var(--font-heading);
+}

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <meta charset="utf-8">
+  <title>福岡家族旅遊 2026</title>
+  <link rel="stylesheet" href="_ds/organic-8ad5e9c7-deb5-4adf-9315-ed14d21928cf/styles.css">
+  <script src="_ds/organic-8ad5e9c7-deb5-4adf-9315-ed14d21928cf/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    @media (max-width: 720px) {
+      .rwd-2col { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-6);background:color-mix(in srgb, var(--color-bg) 92%, transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--color-divider);flex-wrap:wrap;">
+    <div style="font-family:var(--font-heading);font-size:20px;margin-right:var(--space-4);color:var(--color-accent-800);">福岡家族旅遊 ✈ 2026</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <button style="{{ navStyleHome }}" onClick="{{ goHome }}">首頁</button>
+      <button style="{{ navStyleDay1 }}" onClick="{{ goDay1 }}">Day1</button>
+      <button style="{{ navStyleDay2 }}" onClick="{{ goDay2 }}">Day2</button>
+      <button style="{{ navStyleDay3 }}" onClick="{{ goDay3 }}">Day3</button>
+      <button style="{{ navStyleDay4 }}" onClick="{{ goDay4 }}">Day4</button>
+      <button style="{{ navStyleDay5 }}" onClick="{{ goDay5 }}">Day5</button>
+      <button style="{{ navStyleFood }}" onClick="{{ goFood }}">食物與餐廳</button>
+      <button style="{{ navStyleSouvenir }}" onClick="{{ goSouvenir }}">購物</button>
+      <button style="{{ navStyleMap }}" onClick="{{ goMap }}">地圖</button>
+      <button style="{{ navStyleInfo }}" onClick="{{ goInfo }}">實用資訊</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:4px;margin-left:auto;">
+      <button style="width:30px;height:30px;border-radius:999px;border:1px solid var(--color-divider);background:transparent;cursor:pointer;font-size:12px;color:var(--color-text);" onClick="{{ zoomOut }}">A-</button>
+      <span style="font-size:11px;opacity:0.6;min-width:34px;text-align:center;">{{ zoomLabel }}</span>
+      <button style="width:30px;height:30px;border-radius:999px;border:1px solid var(--color-divider);background:transparent;cursor:pointer;font-size:14px;color:var(--color-text);" onClick="{{ zoomIn }}">A+</button>
+    </div>
+  </div>
+
+  <div style="zoom:{{ zoomValue }};">
+
+  <!-- HOME -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6) var(--space-8);">
+      <div>
+        <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-2);">FAMILY TRIP · 2026/08/26 - 08/30</div>
+        <h1 style="font-size:52px;margin-bottom:var(--space-3);">福岡．家族慢旅</h1>
+        <p style="font-size:16px;opacity:0.85;max-width:60ch;margin-bottom:var(--space-4);">五天四夜，從博多老城到太宰府梅林，從柳川水鄉到門司港夕陽<br>，用最舒服的步調把福岡走一遍。</p>
+        <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-6);">
+          <span style="display:inline-flex;align-items:center;font-size:12px;padding:6px 14px;border-radius:999px;background:var(--color-accent-100);color:var(--color-accent-800);">✈ 8/26 09:35 桃園起飛</span>
+          <span style="display:inline-flex;align-items:center;font-size:12px;padding:6px 14px;border-radius:999px;background:var(--color-accent-2-100);color:var(--color-accent-2-800);">🏨 福岡日航飯店・博多車站步行3分</span>
+          <span style="display:inline-flex;align-items:center;font-size:12px;padding:6px 14px;border-radius:999px;background:var(--color-neutral-200);color:var(--color-neutral-800);">✈ 8/30 14:15 福岡返台</span>
+        </div>
+      </div>
+      <image-slot id="hero-fukuoka" src="./assets/family-photo.jpg" fit="contain" shape="rounded" radius="28" placeholder="全家福照片" style="width:100%;aspect-ratio:3054/1373;box-shadow:var(--shadow-md);"></image-slot>
+
+      <h2 style="margin-top:var(--space-8);margin-bottom:var(--space-4);font-size:26px;">五天行程一覽</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--space-3);">
+        <div onClick="{{ goDay1 }}" style="cursor:pointer;padding:var(--space-3);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);box-shadow:var(--shadow-sm);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">DAY 1 · 8/26 (三)</div>
+          <div style="font-family:var(--font-heading);font-size:18px;margin:4px 0;">抵達博多．櫛田神社</div>
+          <div style="font-size:13px;opacity:0.75;">入境・櫛田神社・明太子晚餐・友都八喜/屋台</div>
+        </div>
+        <div onClick="{{ goDay2 }}" style="cursor:pointer;padding:var(--space-3);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);box-shadow:var(--shadow-sm);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">DAY 2 · 8/27 (四)</div>
+          <div style="font-family:var(--font-heading);font-size:18px;margin:4px 0;">大濠公園．福岡塔夜景</div>
+          <div style="font-size:13px;opacity:0.75;">大濠公園散策・和牛燒肉午餐・福岡塔看夜景</div>
+        </div>
+        <div onClick="{{ goDay3 }}" style="cursor:pointer;padding:var(--space-3);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);box-shadow:var(--shadow-sm);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">DAY 3 · 8/28 (五)</div>
+          <div style="font-family:var(--font-heading);font-size:18px;margin:4px 0;">太宰府天滿宮．柳川遊船</div>
+          <div style="font-size:13px;opacity:0.75;">租車出遊・太宰府梅枝餅・柳川鰻魚飯</div>
+        </div>
+        <div onClick="{{ goDay4 }}" style="cursor:pointer;padding:var(--space-3);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);box-shadow:var(--shadow-sm);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">DAY 4 · 8/29 (六)</div>
+          <div style="font-family:var(--font-heading);font-size:18px;margin:4px 0;">門司港懷舊．親親動物園</div>
+          <div style="font-size:13px;opacity:0.75;">租車出遊・沾麵午餐・唐戶市場海鮮</div>
+        </div>
+        <div onClick="{{ goDay5 }}" style="cursor:pointer;padding:var(--space-3);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);box-shadow:var(--shadow-sm);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">DAY 5 · 8/30 (日)</div>
+          <div style="font-family:var(--font-heading);font-size:18px;margin:4px 0;">博多車站最後採購</div>
+          <div style="font-size:13px;opacity:0.75;">運河城/車站輕鬆購物・14:15 班機返台</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- DAY 1 -->
+  <sc-if value="{{ isDay1 }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);">DAY 1 · 2026/08/26（三）</div>
+      <h1 style="margin-bottom:var(--space-2);">抵達博多，櫛田神社初探</h1>
+      <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-bottom:var(--space-6);">
+        <span style="font-size:11px;padding:3px 10px;border-radius:calc(var(--radius-md)*0.75);background:var(--color-neutral-100);color:var(--color-neutral-800);">✈ 09:35 桃園起飛</span>
+        <span style="font-size:11px;padding:3px 10px;border-radius:calc(var(--radius-md)*0.75);background:var(--color-neutral-100);color:var(--color-neutral-800);">🛬 13:05 抵達福岡機場</span>
+        <span style="font-size:11px;padding:3px 10px;border-radius:calc(var(--radius-md)*0.75);background:var(--color-accent-2-100);color:var(--color-accent-2-800);">🏨 入住福岡日航飯店</span>
+      </div>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">下午景點</div>
+          <h3>櫛田神社</h3>
+          <p style="opacity:0.85;">博多的總鎮守，已有超過1200年歷史，是博多祇園山笠祭典的發源地。境內常年展示華麗的「飾山笠」巨型花車，高聳的博多鈿彫刻與朱紅樓門很好拍。神社緊鄰博多運河城，逛完可以直接散步過去，長輩走起來也輕鬆。</p>
+          <div style="margin-top:var(--space-2);font-size:12px;opacity:0.65;">📍 福岡市博多區上川端町1-41　步行可達博多運河城</div>
+          <a href="https://tw.wamazing.com/media/article/a-3791/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+        </div>
+        <image-slot id="day1-kushida" shape="rounded" radius="20" placeholder="櫛田神社照片" style="width:100%;height:100%;min-height:220px;filter:saturate(0.6) contrast(0.85) brightness(1.1) opacity(0.94);"></image-slot>
+      </div>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">正餐．晚餐</div>
+          <h3>JR博多城 9F．椒房庵</h3>
+          <p style="opacity:0.85;">明太子專門店直營的餐廳，招牌是明太子茶泡飯、明太子玉子燒定食，鹹香夠味又不會太辣，小孩長輩都能接受。就在博多車站樓上，剛下飛機拖著行李也方便直達。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">宵夜</div>
+          <h3>友都八喜樓上超市／中洲屋台</h3>
+          <p style="opacity:0.85;">體力還夠的話，可以走去中洲川端的屋台街，坐在路邊攤吃碗豚骨拉麵配啤酒；想早點休息的話，友都八喜（Yodobashi）樓上超市也有現成熟食、水果和啤酒，回飯店配著吃也很滿足。</p>
+        </div>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-accent-100);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-800);margin-bottom:8px;">Day1 必買伴手禮</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">明太子（椒房庵／ふくや）</span>
+          <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">通りもん饅頭</span>
+          <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">博多美食伴手禮（車站B1）</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- DAY 2 -->
+  <sc-if value="{{ isDay2 }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);">DAY 2 · 2026/08/27（四）</div>
+      <h1 style="margin-bottom:var(--space-6);">大濠公園散策，福岡塔看夜景</h1>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">上午景點</div>
+          <h3>大濠公園</h3>
+          <p style="opacity:0.85;">仿中國杭州西湖打造的水景公園，湖面遼闊、環湖步道平坦好走，很適合慢慢散步、餵鴿子，也能租天鵝船遊湖。園內的星巴克大濠公園店坐擁湖景，是中途歇腳喝咖啡的好地方。</p>
+          <div style="margin-top:var(--space-2);font-size:12px;opacity:0.65;">📍 福岡市中央區大濠公園　鄰近福岡城跡</div>
+          <a href="https://www.ohorikouen.jp/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+        </div>
+        <image-slot id="day2-ohori" shape="rounded" radius="20" placeholder="大濠公園照片" style="width:100%;height:100%;min-height:220px;"></image-slot>
+      </div>
+
+      
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">正餐．午餐</div>
+        <h3>中洲．燒肉處石原牛</h3>
+        <p style="opacity:0.85;">主打福岡在地和牛「石原牛」，午間套餐份量剛好、價格比晚餐親民很多，適合全家聚餐打牙祭，是這趟旅程犒賞自己的一餐。</p>
+      </div>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+        <image-slot id="day2-tower" shape="rounded" radius="20" placeholder="福岡塔夜景照片" style="width: 356px; height: 361px; min-height: 220px; filter: saturate(0.6) contrast(0.85) brightness(1.1) opacity(0.94)"></image-slot>
+        <div style="padding: var(--space-4); border-radius: calc(var(--radius-lg)*1.15); background: var(--color-surface); width: 493px; height: 388px">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">下午／傍晚景點</div>
+          <h3>福岡塔（看夜景）</h3>
+          <div style="opacity:0.85;"><span id="docs-internal-guid-2828d454-7fff-4194-ad45-bef414297676"><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">為紀念於1989年舉行的「亞洲太平洋博覽會」而建，是福岡市的地標建築。</span><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">塔高234公尺，塔的頂樓觀景臺能以360度全景角度眺望福岡市街景。
+</span><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">塔內設有VR雙眼望遠鏡能給人宛如在空中飛翔的感受，塔內2樓有高120公尺景觀的「空中咖啡廳&amp;餐廳 Refuge」，店內整片大面落地窗宛如置身空中庭園。</span></p><br></span>日本最高的海濱塔，外牆由8000片半反射玻璃組成，白天閃亮、夜晚點燈變化萬千。建議傍晚上塔，可以同時看到日落與福岡市區華燈初上，123公尺展望室還能遠眺博多灣。</div>
+          <a href="https://bobbytravel.tw/fukuoka-tower/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+        </div>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-accent-2-100);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-2-800);margin-bottom:8px;">順路購物筆記</div>
+        <p style="margin:0;font-size:13px;color:var(--color-accent-2-800);">博多運河城（適合長輩逛，鞋類選擇多，含 Danner 登山鞋專櫃）／博多車站（服飾選擇多）／天神PARCO（日系選品品牌多）／天神Mina（Uniqlo・GU・Loft等平價品牌）。</p>
+      </div><div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">大濠公園景點地圖</div>
+        <div class="rwd-2col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:var(--space-4);align-items:start;">
+          <image-slot id="day2-ohori-map" src="./assets/ohori-park-map.png" fit="contain" shape="rounded" radius="20" placeholder="大濠公園景點地圖" style="width: 410px; height: 524px; background: var(--color-bg)"></image-slot>
+          <div>
+            <div style="font-size:13px;opacity:0.75;margin-top:1.5em;margin-bottom:var(--space-3);">
+              <p style="margin:0 0 8px;">公園為環湖步道，中央有柳島、松島、鴨島三座小島以橋相連，繞湖一圈約2公里，設有停車場、洗手間、租借腳踏船碼頭與AED，帶長輩散步或帶小孩騎車都很方便找到休息點。</p>
+              <p style="margin:0 0 4px;"><b>福岡市美術館</b></p>
+              <ul style="margin:0 0 8px;padding-left:1.1em;">
+                <li><b>草間彌生代表作</b>：戶外廣場展示知名藝術家草間彌生的經典巨型《黃色南瓜》雕塑，是熱門拍照打卡點。</li>
+                <li><b>多元藝術館藏</b>：館內藏有達利、米羅等西方大師作品，以及豐富的亞洲近代與當代藝術品。</li>
+              </ul>
+              <p style="margin:0 0 4px;"><b>大濠公園 日本庭園</b></p>
+              <ul style="margin:0;padding-left:1.1em;">
+                <li><b>傳統庭園景觀</b>：擁有大池、假山、溪流及枯山水造景，四季分別有杜鵑花、初夏新綠與秋季紅葉點綴。</li>
+                <li><b>茶室文化體驗</b>：庭園內設有傳統茶室，提供沉靜優雅的日式文化氛圍。</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">浮見堂</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">Royal Garden Cafe</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">星巴克 福岡大濠公園店</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">貸船碼頭</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">舞鶴公園</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">福岡城跡</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">福岡市美術館</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">大濠公園 日本庭園</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">福岡縣護國神社</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- DAY 3 -->
+  <sc-if value="{{ isDay3 }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);">DAY 3 · 2026/08/28（五）</div>
+      <h1 style="margin-bottom:var(--space-2);">太宰府天滿宮，柳川遊船水鄉</h1>
+      <div style="margin-bottom:var(--space-6);">
+        <span style="font-size:11px;padding:3px 10px;border-radius:calc(var(--radius-md)*0.75);background:var(--color-accent-100);color:var(--color-accent-800);">🚗 今日租車出遊</span>
+      </div>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+        <div style="padding: var(--space-4); border-radius: calc(var(--radius-lg)*1.15); background: var(--color-surface); width: 421px; height: 356px">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">上午景點</div>
+          <h3>太宰府天滿宮</h3>
+          <p style="opacity:0.85;"><span id="docs-internal-guid-4d120361-7fff-7da2-c924-2c422defdc01"><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">日本全國12,000座天滿宮的總本社，主祭神為三大天神之一的菅原道真。</span><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;"><br></span><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">菅原道真是一位才華橫溢的學者及傑出的政治家，因此被日本人尊奉為學問之神，考生會專程前來參拜，是福岡有名的能量景點。考試合格超靈驗！
+</span><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">神社境內精彩看點：其中有「御神牛像」、「太鼓橋」、「寶物殿」，以及旨在延續文化遺產而舉辦的各種藝術活動「</span><a href="https://www.gltjp.com/zh-hant/directory/item/11578/" style="text-decoration: none;"><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">太宰府天滿宮</span></a><span style="font-size: 11pt; font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant: normal; vertical-align: baseline; white-space: pre-wrap;">藝術計劃」等；境內還可以欣賞到梅花等四季各異的時令花卉。</span></span><br></p>
+          
+          <a href="https://www.gltjp.com/zh-hant/article/item/20434/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+        </div><image-slot id="day3-dazaifu" shape="rounded" radius="20" placeholder="太宰府天滿宮照片" style="width: 388px; height: 360px; min-height: 220px"></image-slot>
+        
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">正餐．午餐</div>
+        <h3>太宰府參道美食／一蘭拉麵（五角碗）</h3>
+        <p style="opacity:0.85;margin-bottom:var(--space-2);">參道兩旁老店林立，必吃現烤「梅枝餅」。如果想吃正餐，一蘭拉麵招牌的五角形碗設計很特別。</p>
+        <p style="opacity:0.85;margin-bottom:var(--space-2);">筑紫庵本店：招牌菜單是夾著自製唐揚炸雞的在地漢堡「太宰府漢堡」，唐揚炸雞下面的梅子醬汁讓口感更添風味。</p>
+        <p style="opacity:0.85;margin-bottom:0;">天山 太宰府本店：「鬼瓦最中」是太宰府人氣伴手禮，以象徵性的鬼瓦為造型。內餡使用北海道十勝小豆熬製，甜而不膩；外皮則以佐賀縣優質糯米烘烤，香脆可口。</p>
+      </div>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+        <image-slot id="day3-yanagawa" shape="rounded" radius="20" placeholder="柳川遊船照片" style="width:100%;height:100%;min-height:220px;"></image-slot>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">下午景點</div>
+          <h3>柳川遊船</h3>
+          <p style="opacity:0.85;">有「九州小威尼斯」之稱的水鄉小鎮，搭乘船夫撐篙的木造小船，沿著護城河水道慢慢晃過老街、柳樹與石橋，全程約1小時，坐著就能遊覽，是全家老少都輕鬆的行程。</p>
+          <a href="https://www.yanagawa-net.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+        </div>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">正餐．晚餐</div>
+        <h3>柳川鰻魚飯（せいろ蒸し）</h3>
+        <p style="opacity:0.85;">柳川的招牌鄉土料理，鰻魚先蒸過去油再鋪在拌了醬汁的米飯上，用蒸籠端上桌，鰻魚軟嫩不油膩，是遊船後犒賞自己的經典一餐，當地老店眾多，建議傍晚提早前往避開排隊人潮。</p>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-accent-100);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-800);margin-bottom:8px;">Day3 必買伴手禮</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">梅枝餅（太宰府參道）</span>
+          <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">開運御守／學業御守</span>
+          <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">柳川鰻魚相關伴手（鰻魚醬汁、鰻魚派）</span>
+        </div>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-top:var(--space-4);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">太宰府天滿宮境內地圖</div>
+        <div class="rwd-2col" style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:var(--space-4);align-items:start;">
+          <image-slot id="day3-dazaifu-map" fit="contain" shape="rounded" radius="20" placeholder="拖入太宰府天滿宮境內地圖" style="width: 563px; height: 682px; background: var(--color-bg)"></image-slot>
+          <div>
+            <p style="font-size:13px;opacity:0.75;margin-top:1.5em;margin-bottom:var(--space-3);">從表參道進入依序會經過鳥居、御神牛、太鼓橋，再到主要參拜的御本殿；飛梅、中嶋神社、寶物殿與天開稲荷神社則在本殿後方，時間充裕可以順道走走。</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">① 鳥居</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">② 御神牛</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">③ 太鼓橋</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">④ 麒麟像</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">⑤ 御本殿</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">⑥ 樓門</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">⑦ 飛梅</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">⑧ 中嶋神社</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">⑨ 寶物殿</span>
+              <span style="font-size:12px;padding:5px 12px;border-radius:999px;background:var(--color-bg);color:var(--color-accent-800);">⑩ 天開稲荷神社</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- DAY 4 -->
+  <sc-if value="{{ isDay4 }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);">DAY 4 · 2026/08/29（六）</div>
+      <h1 style="margin-bottom:var(--space-2);">門司港懷舊風情，親親動物園</h1>
+      <div style="margin-bottom:var(--space-6);">
+        <span style="font-size:11px;padding:3px 10px;border-radius:calc(var(--radius-md)*0.75);background:var(--color-accent-100);color:var(--color-accent-800);">🚗 今日租車出遊</span>
+      </div>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">上午景點</div>
+          <h3>門司港懷舊區</h3>
+          <p style="opacity:0.85;">北九州港邊小鎮，保留大量明治、大正時期的紅磚洋樓，舊門司稅關、舊大阪商船大樓等建築很好拍。沿著海邊步道能望向對岸的下關與關門大橋，港邊還有復古的「藍翼門司橋」開橋秀，整體步調悠閒，很適合全家散步拍照。</p>
+          <div style="margin-top:var(--space-2);font-size:12px;opacity:0.65;">📍 北九州市門司區　JR門司港站周邊，有停車場</div>
+          <a href="https://www.crossroadfukuoka.jp/tw/articles/mojiko-retro" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+        </div>
+        <image-slot id="day4-mojiko" shape="rounded" radius="20" placeholder="門司港懷舊建築照片" style="width:100%;height:100%;min-height:220px;filter:saturate(0.6) contrast(0.85) brightness(1.1) opacity(0.94);"></image-slot>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">正餐．午餐</div>
+        <h3>天神PARCO．麵屋間虎（沾麵）</h3>
+        <p style="opacity:0.85;">濃厚系沾麵名店，麵條Q彈、沾醬濃郁鹹香帶點微辣，喜歡吃麵食的人一定會喜歡；不吃辣可以請店家調整辣度。</p>
+      </div>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+        <image-slot id="day4-torius" shape="rounded" radius="20" placeholder="TORIUS親親動物園照片" style="width:100%;height:100%;min-height:220px;filter:saturate(0.6) contrast(0.85) brightness(1.1) opacity(0.94);"></image-slot>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">下午景點</div>
+          <h3>福岡TORIUS親親動物園</h3>
+          <p style="opacity:0.85;">以「零距離接觸」為特色的小型動物園，可以近距離餵食、撫摸羊駝、山羊、水豚等溫馴動物，園區不大但很適合帶青少年放鬆走走，不會太累。</p>
+          <a href="https://torius.jp/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+        </div>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">宵夜／晚餐</div>
+        <h3>北九州唐戶市場（僅週末開放）</h3>
+        <p style="opacity:0.85;">週末限定的海鮮市場活動「土日市」，攤位上現點現做握壽司、生魚片散壽司，價格實惠又新鮮，坐在港邊吃海鮮看夕陽是很棒的收尾行程，記得帶現金比較方便。</p>
+        <a href="https://karatoichiba.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- DAY 5 -->
+  <sc-if value="{{ isDay5 }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);">DAY 5 · 2026/08/30（日）</div>
+      <h1 style="margin-bottom:var(--space-6);">博多車站最後採購，賦歸</h1>
+
+      <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);align-items:start;">
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">上午．自由行建議</div>
+          <h3>博多車站／博多運河城 輕鬆採購</h3>
+          <p style="opacity:0.85;">最後一個上午，行李已經打包得差不多，建議留在飯店附近就好：博多阪急、Amu Plaza博多的地下街和樓上超市可以一次補齊明太子、めんべい仙貝等食物類伴手禮；運河城再逛一圈把漏買的服飾、鞋款補齊。想喝杯咖啡放鬆一下也很足夠，不用趕行程。</p>
+          <div style="margin-top:var(--space-2);font-size:12px;opacity:0.65;">📍 皆在博多車站步行10分鐘範圍內，回飯店拿行李最方便</div>
+          <a href="https://wow-japan.com/shopping-fukuoka-souvenir-pick-ups/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">必買伴手禮 →</a>
+          <a href="https://drshelly.tw/hakatashop/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 4px; margin-top: var(--space-2); font-size: 12px; color: var(--color-accent-700); text-decoration: none;">了解更多 →</a>
+        </div><image-slot id="day5-shopping" shape="rounded" radius="20" placeholder="博多車站購物照片" style="width:100%;aspect-ratio:1010/862;"></image-slot>
+        
+      </div>
+
+      <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;">
+        <span style="font-size:11px;padding:3px 10px;border-radius:calc(var(--radius-md)*0.75);background:var(--color-neutral-100);color:var(--color-neutral-800);">🧳 中午前退房，寄放行李</span>
+        <span style="font-size:11px;padding:3px 10px;border-radius:calc(var(--radius-md)*0.75);background:var(--color-neutral-100);color:var(--color-neutral-800);">✈ 14:15 福岡起飛</span>
+        <span style="font-size:11px;padding:3px 10px;border-radius:calc(var(--radius-md)*0.75);background:var(--color-neutral-100);color:var(--color-neutral-800);">🛬 15:45 抵達桃園</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- FOOD -->
+  <sc-if value="{{ isFood }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <h1 style="margin-bottom:var(--space-2);">食物與餐廳</h1>
+      <p style="opacity:0.75;margin-bottom:var(--space-4);">出發前先認識幾樣福岡代表美食，行程中遇到就知道要點什麼。</p>
+      <image-slot id="food-hero" src="./assets/food-collage.png" fit="contain" shape="rounded" radius="20" placeholder="福岡美食照片" style="width:100%;aspect-ratio:1506/982;margin-bottom:var(--space-6);"></image-slot>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-4);margin-bottom:var(--space-4);">
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <h3>🍜 <a href="https://zh.wikipedia.org/wiki/%E5%8D%9A%E5%A4%9A%E6%8B%89%E9%BA%B5" target="_blank" rel="noopener" style="color:var(--color-text);">博多拉麵</a>（豚骨拉麵）</h3>
+          <p style="opacity:0.85;">以極細的麵條和濃厚的湯汁而著稱，並擁有獨特的途中加麵文化。以牛或豬的腸道為主要材料的<a href="https://zh.wikipedia.org/wiki/%E8%85%B8%E9%8D%8B" target="_blank" rel="noopener" style="color:var(--color-accent-700);">腸鍋</a>和以雞肉、蔬菜為主要材料的<a href="https://zh.wikipedia.org/w/index.php?title=%E6%B0%B4%E7%82%8A&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener" style="color:var(--color-accent-700);">水炊</a>是福岡市發祥的火鍋類料理。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <h3>牛腸鍋</h3>
+          <p style="opacity:0.85;">以牛的大腸、小腸等內臟為主角的火鍋。主要分為濃郁的「味噌」與清爽的「醬油」兩種傳統風味。鍋中會鋪滿大量的韭菜、高麗菜和大蒜片。食材吃完後，必須加入強棒麵（ちゃんぽん麺）吸收精華湯汁。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <h3>明太子</h3>
+          <p style="opacity:0.85;">將鱈魚卵用辣椒、昆布和酒等醬汁醃製而成的辛辣醃漬物。粒粒分明，帶有微辣與鮮甜交織的層次感。最經典的是直接搭配白飯，也常做成明太子法國麵包或明太子義大利麵。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <h3>梅枝餅</h3>
+          <p style="opacity:0.85;">以糯米和梗米混合製成的餅皮包裹紅豆餡，放在刻有梅花圖案的鐵板上烘烤而成。剛烤好時外皮香脆微焦，內裡口感軟Q，內餡則是綿密、甜而不膩的紅豆沙。</p>
+        </div>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-accent-2-100);">
+        <h3 style="color:var(--color-accent-2-900);">中洲屋台街</h3>
+        <p style="color:var(--color-accent-2-800);margin-bottom:var(--space-2);">在美食之都「博多」，能夠深入體驗道地美食的就是<a href="https://www.gltjp.com/zh-hant/directory/item/14348/" target="_blank" rel="noopener" style="color:var(--color-accent-2-900);">中洲屋台街</a>。拉麵、串物、<a href="https://www.gltjp.com/zh-hant/summary/area/kanto/" target="_blank" rel="noopener" style="color:var(--color-accent-2-900);">關東</a>煮等，可以搭配酒飲一起享用。流經九州知名熱鬧商圈「中洲」的那珂川水面上，倒映著絢麗的霓虹燈，攤販沿著川旁一字排開的景象蔚為壯觀。光是散步閑走就能感受到這份熱鬧喧騰。</p>
+        <p style="color:var(--color-accent-2-800);margin:0;">屋台（小吃攤）從18點30分左右開始營業。比起待在同一家，建議在吃得差不多的時候，接著換到下一家屋台的「續攤喝酒」方式會更有趣。</p>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-top:var(--space-4);">
+        <h3>餐廳推薦</h3>
+        <a href="https://www.gltjp.com/zh-hant/article/item/21214/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- SOUVENIR OVERVIEW -->
+  <sc-if value="{{ isSouvenir }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <h1 style="margin-bottom:var(--space-2);">購物</h1>
+      <p style="opacity:0.75;margin-bottom:var(--space-4);">採購清單參考<br></p>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-6);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">福岡四大購物天堂</div>
+        <p style="opacity:0.85;margin:0;">福岡的「博多站週邊」、「天神地區」、「博多灣沿岸」，以及「門司港＆小倉地區」號稱『福岡四大購物天堂』。</p>
+        <a href="https://www.gltjp.com/zh-hant/article/item/20614/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-3);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4);">
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">食物類</div>
+          <h4>明太子</h4>
+          <p style="font-size:13px;opacity:0.8;">ふくや、椒房庵都是名店，車站B1與機場都買得到，適合分送親友。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">食物類</div>
+          <h4>通りもん</h4>
+          <p style="font-size:13px;opacity:0.8;">福岡最具代表性的伴手禮饅頭，白豆沙內餡搭牛奶風味外皮，甜而不膩。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">食物類</div>
+          <h4>めんべい</h4>
+          <p style="font-size:13px;opacity:0.8;">明太子口味仙貝，小包裝方便分送，也是機場最後採購的常勝軍。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">食物類</div>
+          <h4>梅枝餅</h4>
+          <p style="font-size:13px;opacity:0.8;">太宰府限定，現烤最好吃，冷凍包裝版也適合帶回家。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">食物類</div>
+          <h4>柳川鰻魚相關商品</h4>
+          <p style="font-size:13px;opacity:0.8;">鰻魚醬汁、鰻魚派等加工商品，適合喜歡鰻魚飯的人買回家回味。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-accent-2-100);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-2-800);margin-bottom:6px;">生活／服飾類</div>
+          <h4 style="color:var(--color-accent-2-900);">Danner 登山鞋／靴</h4>
+          <p style="font-size:13px;color:var(--color-accent-2-800);">博多運河城內設有專櫃，款式選擇多，日本購入常有價差，適合喜歡登山靴的人下手。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-accent-2-100);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-2-800);margin-bottom:6px;">生活／服飾類</div>
+          <h4 style="color:var(--color-accent-2-900);">天神PARCO 日系選品</h4>
+          <p style="font-size:13px;color:var(--color-accent-2-800);">日本本土設計師品牌與選品店集中，適合找有特色的服飾配件。</p>
+        </div>
+        <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-accent-2-100);">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent-2-800);margin-bottom:6px;">生活／服飾類</div>
+          <h4 style="color:var(--color-accent-2-900);">天神Mina（Uniqlo・GU・Loft）</h4>
+          <p style="font-size:13px;color:var(--color-accent-2-800);">大眾平價品牌一次購足，適合幫全家人添購當季衣物與生活小物。</p>
+        </div>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-top:var(--space-6);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">吉伊卡哇（ちいかわ）專賣店</div>
+        <p style="opacity:0.85;margin-bottom:var(--space-2);"><strong>Chiikawa Land 福岡天神店</strong>　📍 天神 CHARA PARK 8F　<br>福岡的吉伊卡哇常設專賣店，商品線齊全，也有九州／福岡限定款。</p>
+        <div style="padding:var(--space-3);border-radius:var(--radius-md);background:var(--color-bg);margin-bottom:var(--space-3);">
+          <div style="font-family:var(--font-heading);font-size:14px;margin-bottom:6px;color:var(--color-accent-800);">✈ 空港限定版周邊</div>
+          <ul style="margin:0;padding-left:1.1em;font-size:13px;opacity:0.8;">
+            <li>明太子系列：娃娃只有吉伊卡哇和小八兩款，吊飾則吉伊卡哇、小八、兔兔3小隻都有</li>
+            <li>草莓系列：只有3小隻的吊飾</li>
+            <li>豚骨拉麵系列：也只有吊飾</li>
+          </ul>
+        </div>
+        <p style="font-size:12px;opacity:0.6;margin:0;">快閃活動仍會不定期在大丸天神、福岡PARCO、博多運河城等處輪流舉辦，出發前可上ちいかわ情報官網（chiikawa-info.jp）查詢最新場次。</p>
+        <a href="https://chiikawa-info.jp/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-3);font-size:12px;color:var(--color-accent-700);text-decoration:none;">查詢最新快閃店資訊 →</a>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-top:var(--space-4);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">購物中心地圖</div>
+        <image-slot id="shopping-mall-map" fit="contain" shape="rounded" radius="20" placeholder="拖入購物中心地圖" style="width:100%;height:480px;background:var(--color-bg);"></image-slot>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- MAP -->
+  <sc-if value="{{ isMap }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <h1 style="margin-bottom:var(--space-2);">福岡景點地圖</h1>
+      
+      <image-slot id="fukuoka-big-map" fit="contain" shape="rounded" radius="20" placeholder="拖入福岡景點地圖" style="width:100%;height:640px;background:var(--color-surface);"></image-slot>
+
+      <div style="margin-top:var(--space-6);">
+        <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">福岡市7大行政區域地圖</div>
+        <image-slot id="fukuoka-wards-map" src="./assets/fukuoka-7-wards-map.jpg" fit="contain" shape="rounded" radius="20" placeholder="福岡市7大行政區域地圖" style="width:100%;height:640px;background:var(--color-surface);"></image-slot>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- PRACTICAL INFO -->
+  <sc-if value="{{ isInfo }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1080px;margin:0 auto;padding:var(--space-8) var(--space-6);">
+      <h1 style="margin-bottom:var(--space-6);">實用資訊</h1>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <h3>住宿：福岡日航飯店</h3>
+        <p style="opacity:0.85;margin-bottom:var(--space-2);">〒812-0011 福岡市博多區博多駅前2丁目18番25号　TEL 092-482-1111</p>
+        <p style="opacity:0.85;margin-bottom:var(--space-2);">從博多車站經地下道步行約3分鐘可達（6:00-隔日0:10開放），從福岡機場搭地下鐵2站、約5分鐘。飯店設有室內溫水游泳池、健身房、三溫暖、多間餐廳酒吧，適合長輩放鬆使用；地理位置也讓每天早出晚歸都很省力。</p>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        
+        <h3>天氣與穿搭建議</h3><p style="opacity:0.85;margin-bottom:var(--space-4);">8月底的福岡仍是盛夏，日間氣溫多在30-34°C、濕度高，也是颱風季尾聲，出發前建議留意氣象與航班動態。穿搭以透氣排汗的短袖／短褲為主，室內冷氣強可備薄外套；戶外行程（太宰府、柳川、門司港）都需要走不少路，鞋子舒適度優先於造型。</p>
+        <div style="font-size:12px;opacity:0.6;margin-bottom:var(--space-2);">以下為福岡8月底歷年平均氣候參考值（非即時預報），出發前1週請再查詢實際天氣預報</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--space-3);">
+          <div style="padding:var(--space-3);border-radius:var(--radius-md);background:var(--color-bg);">
+            <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">8/26（三）</div>
+            <div style="font-family:var(--font-heading);font-size:20px;margin:4px 0;">☀ 33° / 27°</div>
+            <div style="font-size:12px;opacity:0.7;">晴時多雲・濕度高</div>
+          </div>
+          <div style="padding:var(--space-3);border-radius:var(--radius-md);background:var(--color-bg);">
+            <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">8/27（四）</div>
+            <div style="font-family:var(--font-heading);font-size:20px;margin:4px 0;">⛅ 32° / 26°</div>
+            <div style="font-size:12px;opacity:0.7;">多雲・午後偶陣雨</div>
+          </div>
+          <div style="padding:var(--space-3);border-radius:var(--radius-md);background:var(--color-bg);">
+            <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">8/28（五）</div>
+            <div style="font-family:var(--font-heading);font-size:20px;margin:4px 0;">☀ 33° / 26°</div>
+            <div style="font-size:12px;opacity:0.7;">晴朗・紫外線強</div>
+          </div>
+          <div style="padding:var(--space-3);border-radius:var(--radius-md);background:var(--color-bg);">
+            <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">8/29（六）</div>
+            <div style="font-family:var(--font-heading);font-size:20px;margin:4px 0;">⛅ 32° / 26°</div>
+            <div style="font-size:12px;opacity:0.7;">多雲・沿海風稍大</div>
+          </div>
+          <div style="padding:var(--space-3);border-radius:var(--radius-md);background:var(--color-bg);">
+            <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);">8/30（日）</div>
+            <div style="font-family:var(--font-heading);font-size:20px;margin:4px 0;">☀ 33° / 27°</div>
+            <div style="font-size:12px;opacity:0.7;">晴時多雲</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <h3>打包／行李清單</h3>
+        <div class="rwd-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+          <ul style="margin:0;padding-left:1.1em;opacity:0.85;">
+            <li>證件：護照、電子機票、駕照正本＋日文譯本</li>
+            <li>輕便透氣衣物（棉麻材質為佳）、一件薄外套應付冷氣房</li>
+            <li>好走的鞋（太宰府、門司港、柳川都要走路）</li>
+            <li>常備藥品：長輩慢性藥、暈車藥、腸胃藥</li>
+          </ul>
+          <ul style="margin:0;padding-left:1.1em;opacity:0.85;">
+            <li>防曬乳、遮陽帽、太陽眼鏡、輕便雨具</li>
+            <li>行動電源、轉接頭、Wi-Fi分享機或上網SIM</li>
+            <li>空的行李袋或折疊袋，裝伴手禮</li>
+            <li>現金（唐戶市場、屋台等小店多為現金交易）</li>
+          </ul>
+        </div>
+      </div><div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <h3>交通與租車提醒</h3>
+        <p style="opacity:0.85;margin-bottom:var(--space-2);">Day1、Day2、Day5 主要靠地下鐵、西鐵電車與步行；Day3（太宰府、柳川）與Day4（門司港、TORIUS動物園）距市區較遠且景點分散，安排租車自駕較有彈性。</p>
+        <p style="opacity:0.85;margin-bottom:0;">建議：租車當天在飯店附近取還車、日本靠左行駛需留意、國際駕照與台灣駕照日文譯本都要隨身攜帶、市區停車費不便宜可多利用景點附設停車場。</p>
+      </div>
+
+      <div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-4);">
+        <h3>電壓與電器提醒</h3>
+        <p style="opacity:0.85;margin-bottom:var(--space-2);">日本電壓為100V，插座為雙平腳（與台灣插頭形狀相同，但電壓較低），台灣電器大多可直接使用，若有110V/220V雙電壓標示的充電器、吹風機也能安心帶。建議還是帶一顆萬用轉接頭備用，以防插座規格不合。</p>
+        <p style="opacity:0.85;margin-bottom:0;">行動電源／手持電風扇（含鋰電池）搭機規定：鋰電池只能放隨身行李，不可託運；行動電源容量100Wh以下免申報可攜帶，100-160Wh需經航空公司同意、每人限帶2顆，超過160Wh禁止攜帶；手持電風扇若電池可拆下，建議拆下後與行動電源同樣放隨身行李，登機前留意各家航空公司最新規定為準。</p>
+      </div>
+
+      
+    </div>
+  </sc-if>
+
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = { tab: 'home', zoom: 1 };
+
+  navStyle(active) {
+    return {
+      fontFamily: 'var(--font-heading)',
+      fontSize: '13px',
+      padding: '7px 16px',
+      borderRadius: '999px',
+      border: 'none',
+      cursor: 'pointer',
+      background: active ? 'var(--color-accent)' : 'transparent',
+      color: active ? 'var(--color-bg)' : 'var(--color-text)',
+    };
+  }
+
+  renderVals() {
+    const tab = this.state.tab;
+    const go = (t) => () => this.setState({ tab: t });
+    return {
+      isHome: tab === 'home',
+      isDay1: tab === 'day1',
+      isDay2: tab === 'day2',
+      isDay3: tab === 'day3',
+      isDay4: tab === 'day4',
+      isDay5: tab === 'day5',
+      isFood: tab === 'food',
+      isSouvenir: tab === 'souvenir',
+      isMap: tab === 'map',
+      isInfo: tab === 'info',
+      navStyleHome: this.navStyle(tab === 'home'),
+      navStyleDay1: this.navStyle(tab === 'day1'),
+      navStyleDay2: this.navStyle(tab === 'day2'),
+      navStyleDay3: this.navStyle(tab === 'day3'),
+      navStyleDay4: this.navStyle(tab === 'day4'),
+      navStyleDay5: this.navStyle(tab === 'day5'),
+      navStyleFood: this.navStyle(tab === 'food'),
+      navStyleSouvenir: this.navStyle(tab === 'souvenir'),
+      navStyleMap: this.navStyle(tab === 'map'),
+      navStyleInfo: this.navStyle(tab === 'info'),
+      goHome: go('home'),
+      goDay1: go('day1'),
+      goDay2: go('day2'),
+      goDay3: go('day3'),
+      goDay4: go('day4'),
+      goDay5: go('day5'),
+      goFood: go('food'),
+      goSouvenir: go('souvenir'),
+      goMap: go('map'),
+      goInfo: go('info'),
+      zoomValue: this.state.zoom,
+      zoomLabel: Math.round(this.state.zoom * 100) + '%',
+      zoomIn: () => this.setState(s => ({ zoom: Math.min(1.3, +(s.zoom + 0.1).toFixed(1)) })),
+      zoomOut: () => this.setState(s => ({ zoom: Math.max(0.8, +(s.zoom - 0.1).toFixed(1)) })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
