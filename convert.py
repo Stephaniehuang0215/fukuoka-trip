@@ -51,8 +51,10 @@ def slot(m):
     ph = a.get('placeholder', '圖片')
     src_attr = a.get('src', '').lstrip('./')
     box = style + (';border-radius:%spx' % radius if radius else '')
-    # 一律先輸出空框，實際圖片由 js/app.js 依序試載（設計稿指定的檔名 -> 與框同名的檔案）
-    return ('<figure class="img-slot is-empty" data-slot="%s" data-src="%s" data-fit="%s"'
+    # 一律先輸出空框，實際圖片由 js/app.js 依序試載（設計稿指定的檔名 -> 與框同名的檔案）。
+    # 預設「不」掛 is-empty：載入中維持設計稿的真實尺寸與素色底，
+    # 只有全部試完都找不到圖，app.js 才會補上 is-empty 變成虛線佔位框。
+    return ('<figure class="img-slot" data-slot="%s" data-src="%s" data-fit="%s"'
             ' data-placeholder="%s" style="%s"></figure>'
             % (sid, html.escape(src_attr), fit, html.escape(ph), box))
 

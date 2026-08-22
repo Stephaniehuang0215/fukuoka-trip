@@ -75,12 +75,14 @@
 
       var i = 0;
       (function tryNext() {
-        if (i >= cands.length) return;         /* 都沒有就維持虛線佔位框 */
+        if (i >= cands.length) {               /* 全部試完都沒有 -> 才顯示虛線佔位框 */
+          slot.classList.add('is-empty');
+          return;
+        }
         var img = new Image();
         img.onload = function () {
           img.alt = slot.dataset.placeholder || '';
           img.style.cssText = 'width:100%;height:100%;object-fit:' + (slot.dataset.fit || 'cover') + ';';
-          slot.classList.remove('is-empty');
           slot.appendChild(img);
         };
         img.onerror = function () { i++; tryNext(); };
