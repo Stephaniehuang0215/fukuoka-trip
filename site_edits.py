@@ -49,7 +49,7 @@ DAY2_OHORI_NEW = 'href="https://www.ohorikouen.jp/zh/#"'
 DAY3_MAP_ANCHOR = '⑩ 天開稲荷神社</span>\n            </div>'
 DAY3_STARBUCKS = """
             <div style="margin-top:var(--space-4);padding-top:var(--space-3);border-top:1px solid var(--color-divider);">
-              <p style="margin:0 0 6px;font-size:13px;"><b>參道不能錯過景點：星巴克太宰府天滿宮表參道店</b></p>
+              <p style="margin:0 0 6px;font-size:13px;"><b>表參道不能錯過景點：星巴克太宰府天滿宮表參道店</b></p>
               <p style="margin:0 0 8px;font-size:13px;opacity:0.75;">星巴克為了向全世界傳遞具有地方魅力的文化，在日本具有象徵意義的地點開設原創設計的「地方地標店」之一。</p>
               <p style="margin:0;font-size:13px;opacity:0.75;">建築內外獨特的木造組合結構是由「新國立競技場」的建築師隈研吾所設計。近2,000枝檜木交錯組合，除了支撐建築物之外，同時也營造出光與風流動的圖像。</p>
             </div>"""
@@ -65,6 +65,11 @@ def apply(html):
     html = html.replace(DAY2_OHORI_OLD, DAY2_OHORI_NEW)
     assert html.count(DAY3_MAP_ANCHOR) == 1, '太宰府地圖錨點數量 %d' % html.count(DAY3_MAP_ANCHOR)
     html = html.replace(DAY3_MAP_ANCHOR, DAY3_MAP_ANCHOR + DAY3_STARBUCKS)
+    # 「順路購物筆記」原本沒有下邊距，會跟下面的地圖區塊黏在一起
+    _gap_old = 'background:var(--color-accent-2-100);">'
+    _gap_new = 'background:var(--color-accent-2-100);margin-bottom:var(--space-4);">'
+    assert html.count(DAY2_ANCHOR) == 1, '順路購物筆記錨點數量 %d' % html.count(DAY2_ANCHOR)
+    html = html.replace(DAY2_ANCHOR, DAY2_ANCHOR.replace(_gap_old, _gap_new))
     return html
 
 if __name__ == '__main__':
