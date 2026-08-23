@@ -77,7 +77,7 @@ DAY1_KUSHIDA_ADD = ('\n          <a href="https://bobbytravel.tw/kushida-shrine/
 DAY3_YANAGAWA_ANCHOR = ('<a href="https://www.yanagawa-net.com/" target="_blank" rel="noopener" '
                         'style="%s">了解更多 →</a>' % LINK_STYLE)
 DAY3_YANAGAWA_ADD = ('\n          <a href="https://bobbytravel.tw/yanagawa/" target="_blank" rel="noopener" '
-                     'style="%s">7大船家比較＆跳船表演攻略 →</a>'
+                     'style="%s">7大船家比較、跳船表演攻略 →</a>'
                      % LINK_STYLE.replace('display:inline-flex;', 'display:flex;width:fit-content;')
                                  .replace('margin-top:var(--space-2);', 'margin-top:6px;'))
 
