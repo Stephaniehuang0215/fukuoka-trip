@@ -81,6 +81,14 @@ DAY3_YANAGAWA_ADD = ('\n          <a href="https://bobbytravel.tw/yanagawa/" tar
                      % LINK_STYLE.replace('display:inline-flex;', 'display:flex;width:fit-content;')
                                  .replace('margin-top:var(--space-2);', 'margin-top:6px;'))
 
+DAY3_YANAGAWA_NOTE = """
+          <div style="margin-top:var(--space-3);padding:var(--space-3);border-radius:calc(var(--radius-lg)*0.9);background:var(--color-accent-100);color:var(--color-accent-800);font-size:12px;line-height:1.75;">
+            <div style="font-weight:600;margin-bottom:4px;">⚠ 營運時間提醒</div>
+            遊船大約每30分鐘一班。<br>
+            為防止中暑，遊船將於 10:40 至 15:40 暫停營運。<br>
+            請注意，這與通常的營運時間（9:30 至 15:00）有所不同。
+          </div>"""
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -102,7 +110,7 @@ def apply(html):
     assert html.count(DAY1_KUSHIDA_ANCHOR) == 1, '櫛田神社錨點數量 %d' % html.count(DAY1_KUSHIDA_ANCHOR)
     html = html.replace(DAY1_KUSHIDA_ANCHOR, DAY1_KUSHIDA_ANCHOR + DAY1_KUSHIDA_ADD)
     assert html.count(DAY3_YANAGAWA_ANCHOR) == 1, '柳川遊船錨點數量 %d' % html.count(DAY3_YANAGAWA_ANCHOR)
-    html = html.replace(DAY3_YANAGAWA_ANCHOR, DAY3_YANAGAWA_ANCHOR + DAY3_YANAGAWA_ADD)
+    html = html.replace(DAY3_YANAGAWA_ANCHOR, DAY3_YANAGAWA_ANCHOR + DAY3_YANAGAWA_ADD + DAY3_YANAGAWA_NOTE)
     return html
 
 if __name__ == '__main__':
