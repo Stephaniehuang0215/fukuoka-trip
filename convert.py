@@ -88,6 +88,10 @@ for _bad, _good in [('<a href="https://zh.wikipedia.org/w/index.php?title=%E6%B0
 _night = '<p style="opacity:0.85;">體力還夠的話，可以走去中洲川端的屋台街，坐在路邊攤吃碗豚骨拉麵配啤酒；想早點休息的話，友都八喜（Yodobashi）樓上超市也有現成熟食、水果和啤酒，回飯店配著吃也很滿足。</p>'
 body = body.replace(_night, _night + '\n          <a href="https://almablog.tw/blog/post/yodobashi-hakata" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>')
 
+# 站主後續加的區塊與連結（Day2 牛腸鍋、Day3 鰻魚飯連結），集中放在 site_edits.py
+import site_edits
+body = site_edits.apply(body)
+
 assert '{{' not in body, '仍有未轉換的 binding: ' + str(re.findall(r'\{\{[^}]*\}\}', body)[:5])
 assert 'image-slot' not in body and 'sc-if' not in body
 
