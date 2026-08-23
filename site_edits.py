@@ -195,6 +195,16 @@ DONKI_NEW = """<div style="padding:var(--space-4);border-radius:calc(var(--radiu
           </div>""" % (_MAP_TENJIN, _MAP, _MAP_NAKASU, _MAP,
                        _MAP, _SOUV_LINK, _SOUV_LINK + 'margin-left:var(--space-4);')
 
+# 購物分頁：Danner 登山鞋卡片加上「買鞋攻略」
+# 這格底色是 accent-2（綠），連結顏色沿用同色系才不會突兀
+DANNER_ANCHOR = ('<h4 style="color:var(--color-accent-2-900);">Danner 登山鞋／靴</h4>\n'
+                 '          <p style="font-size:13px;color:var(--color-accent-2-800);">'
+                 '博多運河城內設有專櫃，款式選擇多，日本購入常有價差，適合喜歡登山靴的人下手。</p>')
+DANNER_LINK = ('\n          <a href="https://www.threads.com/@dingtaxi_jp/post/DVsorMWk4zu'
+               '?xmt=AQG04LKwqf0NG7oyBnljbd-Xk-nMUgLmY7iu_hpKin5hiA" target="_blank" rel="noopener" '
+               'style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);'
+               'font-size:12px;color:var(--color-accent-2-900);text-decoration:none;">買鞋攻略 →</a>')
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -227,6 +237,8 @@ def apply(html):
     html = html.replace(SOUV_ANCHOR, SOUV_BLOCK.replace('\n      </div>\n\n      ',
                                                       SOUV_PHOTOS + '\n      </div>\n\n      ')
                         + SOUV_ANCHOR)
+    assert html.count(DANNER_ANCHOR) == 1, 'Danner 錨點數量 %d' % html.count(DANNER_ANCHOR)
+    html = html.replace(DANNER_ANCHOR, DANNER_ANCHOR + DANNER_LINK)
     assert html.count(DONKI_OLD) == 1, '唐吉訶德錨點數量 %d' % html.count(DONKI_OLD)
     html = html.replace(DONKI_OLD, DONKI_NEW)
     for _a, _b in TORIMON:
