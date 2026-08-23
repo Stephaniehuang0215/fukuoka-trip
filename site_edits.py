@@ -41,6 +41,10 @@ DAY3_ANCHOR = ('<p style="opacity:0.85;">柳川的招牌鄉土料理，鰻魚先
 DAY3_LINK = ('\n        <a href="https://bobbytravel.tw/motoyoshiya/" target="_blank" rel="noopener" '
              'style="%s">了解更多 →</a>' % LINK_STYLE)
 
+# Day2 大濠公園「了解更多」改指中文版官網（原設計稿是日文版首頁）
+DAY2_OHORI_OLD = 'href="https://www.ohorikouen.jp/"'
+DAY2_OHORI_NEW = 'href="https://www.ohorikouen.jp/zh/#"'
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -48,6 +52,8 @@ def apply(html):
     html = html.replace(DAY3_ANCHOR, DAY3_ANCHOR + DAY3_LINK)
     assert html.count(DAY1_SHOBOAN_ANCHOR) == 1, '椒房庵錨點數量 %d' % html.count(DAY1_SHOBOAN_ANCHOR)
     html = html.replace(DAY1_SHOBOAN_ANCHOR, DAY1_SHOBOAN_ANCHOR + DAY1_SHOBOAN_LINK)
+    assert html.count(DAY2_OHORI_OLD) == 1, '大濠公園連結數量 %d' % html.count(DAY2_OHORI_OLD)
+    html = html.replace(DAY2_OHORI_OLD, DAY2_OHORI_NEW)
     return html
 
 if __name__ == '__main__':
