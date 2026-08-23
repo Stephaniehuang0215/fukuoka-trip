@@ -69,6 +69,21 @@ body = body.replace(
     '<div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">福岡市7大行政區域地圖</div>',
     '<h1 style="margin-bottom:var(--space-2);">福岡市7大行政區域地圖</h1>')
 
+# Day1「了解更多」換成站主指定的文章（原設計稿的 a-3791 不是要的那篇）
+body = body.replace('https://tw.wamazing.com/media/article/a-3791/',
+                    'https://tw.wamazing.com/media/article/a-3310/')
+
+# Day4「了解更多」原本指向 torius.jp，該網域不存在（NXDOMAIN）。
+# 改成動物園自己的官方頁（營業時間、票價、動物種類都在這）。
+body = body.replace('https://torius.jp/',
+                    'https://www.biopark.co.jp/toriuszoo/')
+
+# 食物分頁兩個壞掉的自動連結（原文從外站帶過來的），保留文字、拿掉超連結：
+#   「水炊」  -> 指向維基百科的「建立此頁面」編輯畫面（該條目根本不存在）
+#   「關東」  -> 「關東煮」被誤連到關東地區（東京那邊）的旅遊頁，跟福岡無關
+for _bad, _good in [('<a href="https://zh.wikipedia.org/w/index.php?title=%E6%B0%B4%E7%82%8A&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener" style="color:var(--color-accent-700);">水炊</a>', '水炊'), ('<a href="https://www.gltjp.com/zh-hant/summary/area/kanto/" target="_blank" rel="noopener" style="color:var(--color-accent-2-900);">關東</a>', '關東')]:
+    body = body.replace(_bad, _good)
+
 assert '{{' not in body, '仍有未轉換的 binding: ' + str(re.findall(r'\{\{[^}]*\}\}', body)[:5])
 assert 'image-slot' not in body and 'sc-if' not in body
 
