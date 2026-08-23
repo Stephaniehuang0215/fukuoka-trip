@@ -217,6 +217,16 @@ HOTEL_NEW = ('<p style="opacity:0.85;margin-bottom:var(--space-2);">'
              '<a href="' + _HOTEL_MAP + '" target="_blank" rel="noopener" style="'
              + _MAP + '">Google 地圖 →</a></p>')
 
+# 購物分頁：「福岡四大購物天堂」加上優惠券連結
+MALLS_ANCHOR = ('<a href="https://www.gltjp.com/zh-hant/article/item/20614/" target="_blank" '
+                'rel="noopener" style="display:inline-flex;align-items:center;gap:4px;'
+                'margin-top:var(--space-3);font-size:12px;color:var(--color-accent-700);'
+                'text-decoration:none;">了解更多 →</a>')
+MALLS_ADD = ('\n        <a href="https://gogojp.tw/coupon-all/" target="_blank" rel="noopener" '
+             'style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-3);'
+             'margin-left:var(--space-4);font-size:12px;color:var(--color-accent-700);'
+             'text-decoration:none;">下載各種商場優惠劵 →</a>')
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -253,6 +263,8 @@ def apply(html):
     html = html.replace(DANNER_ANCHOR, DANNER_ANCHOR + DANNER_LINK)
     assert html.count(DONKI_OLD) == 1, '唐吉訶德錨點數量 %d' % html.count(DONKI_OLD)
     html = html.replace(DONKI_OLD, DONKI_NEW)
+    assert html.count(MALLS_ANCHOR) == 1, '四大購物天堂錨點數量 %d' % html.count(MALLS_ANCHOR)
+    html = html.replace(MALLS_ANCHOR, MALLS_ANCHOR + MALLS_ADD)
     assert html.count(HOTEL_ANCHOR) == 1, '飯店錨點數量 %d' % html.count(HOTEL_ANCHOR)
     html = html.replace(HOTEL_ANCHOR, HOTEL_NEW)
     for _a, _b in TORIMON:
