@@ -206,6 +206,16 @@ DANNER_LINK = ('\n          <a href="https://www.threads.com/@dingtaxi_jp/post/D
                'style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);'
                'font-size:12px;color:var(--color-accent-2-900);text-decoration:none;">買鞋攻略 →</a>')
 
+# 實用資訊：飯店地址後面加上 Google 地圖連結
+HOTEL_ANCHOR = ('<p style="opacity:0.85;margin-bottom:var(--space-2);">'
+                '〒812-0011 福岡市博多區博多駅前2丁目18番25号\u3000TEL 092-482-1111</p>')
+_HOTEL_MAP = ('https://www.google.com/maps/search/?api=1&amp;query='
+              '%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E8%88%AA%E7%A6%8F%E5%B2%A1')
+HOTEL_NEW = ('<p style="opacity:0.85;margin-bottom:var(--space-2);">'
+             '〒812-0011 福岡市博多區博多駅前2丁目18番25号\u3000TEL 092-482-1111\u3000'
+             '<a href="' + _HOTEL_MAP + '" target="_blank" rel="noopener" style="'
+             + _MAP + '">Google 地圖 →</a></p>')
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -242,6 +252,8 @@ def apply(html):
     html = html.replace(DANNER_ANCHOR, DANNER_ANCHOR + DANNER_LINK)
     assert html.count(DONKI_OLD) == 1, '唐吉訶德錨點數量 %d' % html.count(DONKI_OLD)
     html = html.replace(DONKI_OLD, DONKI_NEW)
+    assert html.count(HOTEL_ANCHOR) == 1, '飯店錨點數量 %d' % html.count(HOTEL_ANCHOR)
+    html = html.replace(HOTEL_ANCHOR, HOTEL_NEW)
     for _a, _b in TORIMON:
         html = html.replace(_a, _b)
     return html
