@@ -116,9 +116,8 @@ DAY3_UNAGI_SHOPS = """
         <p style="margin:var(--space-3) 0 0;font-size:13px;opacity:0.85;">擁有超過三百年歷史的「元祖本吉屋」，被公認為是柳川鰻魚蒸籠飯的發祥地。</p>
         <ul style="margin:var(--space-2) 0 0;padding-left:1.1em;font-size:13px;opacity:0.85;line-height:1.75;">
           <li style="margin-bottom:6px;"><b>元祖本吉屋 本店</b>：福岡縣柳川市旭町69番地（營業至七點）　<a href="https://maps.app.goo.gl/EVdKosKaBxMJVqYX9" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
-          <li style="margin-bottom:6px;"><b>元祖本吉屋 岩田屋店</b>：福岡市中央區天神2-5-35，岩田屋本店 B2（營業至八點）　<a href="https://maps.app.goo.gl/EhSGnrZndYe9pjps8" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
-          <li><b>民藝茶屋「六騎」</b>（營業至三點）：福岡縣柳川市沖端町28　<a href="https://www.google.com/maps/search/?api=1&amp;query=%%E6%%B0%%91%%E8%%97%%9D%%E8%%8C%%B6%%E5%%B1%%8B%%E5%%85%%AD%%E9%%A8%%8E+%%E6%%9F%%B3%%E5%%B7%%9D%%E5%%B8%%82%%E6%%B2%%96%%E7%%AB%%AF%%E7%%94%%BA28" target="_blank" rel="noopener" style="%s">Google 地圖 →</a><br>Google Map 上擁有 4.2 顆星的高分好評，更是許多在地人的私藏名單。</li>
-        </ul>""" % (_MAP, _MAP, _MAP)
+          <li><b>元祖本吉屋 岩田屋店</b>：福岡市中央區天神2-5-35，岩田屋本店 B2（營業至八點）　<a href="https://maps.app.goo.gl/EhSGnrZndYe9pjps8" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
+        </ul>""" % (_MAP, _MAP)
 
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
