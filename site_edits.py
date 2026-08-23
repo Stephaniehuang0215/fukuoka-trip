@@ -54,6 +54,17 @@ DAY3_STARBUCKS = """
               <p style="margin:0;font-size:13px;opacity:0.75;">建築內外獨特的木造組合結構是由「新國立競技場」的建築師隈研吾所設計。近2,000枝檜木交錯組合，除了支撐建築物之外，同時也營造出光與風流動的圖像。</p>
             </div>"""
 
+# Day4 沾麵區塊補上「美味吃法與特色」
+DAY4_TSUKEMEN_ANCHOR = ('<p style="opacity:0.85;">濃厚系沾麵名店，麵條Q彈、沾醬濃郁鹹香帶點微辣，'
+                        '喜歡吃麵食的人一定會喜歡；不吃辣可以請店家調整辣度。</p>')
+DAY4_TSUKEMEN_ADD = """
+        <p style="margin:var(--space-3) 0 4px;font-size:13px;"><b>美味吃法與特色</b></p>
+        <ul style="margin:0;padding-left:1.1em;font-size:13px;opacity:0.85;">
+          <li><b>品嚐原味</b>：先吃一口冰鎮過的粗麵條，感受小麥香氣。</li>
+          <li><b>濃厚沾汁</b>：醬汁以豚骨、雞骨、蔬菜與大量魚介粉熬煮，帶有淡淡柚子清香。</li>
+          <li><b>完美收尾</b>：吃完麵後可加入桌上的柴魚高湯稀釋醬汁飲用，或加點白飯做成雜炊。</li>
+        </ul>"""
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -70,6 +81,8 @@ def apply(html):
     _gap_new = 'background:var(--color-accent-2-100);margin-bottom:var(--space-4);">'
     assert html.count(DAY2_ANCHOR) == 1, '順路購物筆記錨點數量 %d' % html.count(DAY2_ANCHOR)
     html = html.replace(DAY2_ANCHOR, DAY2_ANCHOR.replace(_gap_old, _gap_new))
+    assert html.count(DAY4_TSUKEMEN_ANCHOR) == 1, '沾麵錨點數量 %d' % html.count(DAY4_TSUKEMEN_ANCHOR)
+    html = html.replace(DAY4_TSUKEMEN_ANCHOR, DAY4_TSUKEMEN_ANCHOR + DAY4_TSUKEMEN_ADD)
     return html
 
 if __name__ == '__main__':
