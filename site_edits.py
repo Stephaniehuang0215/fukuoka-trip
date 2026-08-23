@@ -65,6 +65,14 @@ DAY4_TSUKEMEN_ADD = """
           <li><b>完美收尾</b>：吃完麵後可加入桌上的柴魚高湯稀釋醬汁飲用，或加點白飯做成雜炊。</li>
         </ul>"""
 
+# Day1 櫛田神社「了解更多」下方再加一條連結（自己獨立一行）
+DAY1_KUSHIDA_ANCHOR = ('<a href="https://tw.wamazing.com/media/article/a-3310/" target="_blank" rel="noopener" '
+                       'style="%s">了解更多 →</a>' % LINK_STYLE)
+DAY1_KUSHIDA_ADD = ('\n          <a href="https://bobbytravel.tw/kushida-shrine/" target="_blank" rel="noopener" '
+                    'style="%s">必看重點＆御守御朱印攻略 →</a>'
+                    % LINK_STYLE.replace('display:inline-flex;', 'display:flex;width:fit-content;')
+                                .replace('margin-top:var(--space-2);', 'margin-top:6px;'))
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -83,6 +91,8 @@ def apply(html):
     html = html.replace(DAY2_ANCHOR, DAY2_ANCHOR.replace(_gap_old, _gap_new))
     assert html.count(DAY4_TSUKEMEN_ANCHOR) == 1, '沾麵錨點數量 %d' % html.count(DAY4_TSUKEMEN_ANCHOR)
     html = html.replace(DAY4_TSUKEMEN_ANCHOR, DAY4_TSUKEMEN_ANCHOR + DAY4_TSUKEMEN_ADD)
+    assert html.count(DAY1_KUSHIDA_ANCHOR) == 1, '櫛田神社錨點數量 %d' % html.count(DAY1_KUSHIDA_ANCHOR)
+    html = html.replace(DAY1_KUSHIDA_ANCHOR, DAY1_KUSHIDA_ANCHOR + DAY1_KUSHIDA_ADD)
     return html
 
 if __name__ == '__main__':
