@@ -45,6 +45,15 @@ DAY3_LINK = ('\n        <a href="https://bobbytravel.tw/motoyoshiya/" target="_b
 DAY2_OHORI_OLD = 'href="https://www.ohorikouen.jp/"'
 DAY2_OHORI_NEW = 'href="https://www.ohorikouen.jp/zh/#"'
 
+# Day3 太宰府境內地圖區塊，補上參道的星巴克介紹
+DAY3_MAP_ANCHOR = '⑩ 天開稲荷神社</span>\n            </div>'
+DAY3_STARBUCKS = """
+            <div style="margin-top:var(--space-4);padding-top:var(--space-3);border-top:1px solid var(--color-divider);">
+              <p style="margin:0 0 6px;font-size:13px;"><b>參道不能錯過景點：星巴克太宰府天滿宮表參道店</b></p>
+              <p style="margin:0 0 8px;font-size:13px;opacity:0.75;">星巴克為了向全世界傳遞具有地方魅力的文化，在日本具有象徵意義的地點開設原創設計的「地方地標店」之一。</p>
+              <p style="margin:0;font-size:13px;opacity:0.75;">建築內外獨特的木造組合結構是由「新國立競技場」的建築師隈研吾所設計。近2,000枝檜木交錯組合，除了支撐建築物之外，同時也營造出光與風流動的圖像。</p>
+            </div>"""
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -54,6 +63,8 @@ def apply(html):
     html = html.replace(DAY1_SHOBOAN_ANCHOR, DAY1_SHOBOAN_ANCHOR + DAY1_SHOBOAN_LINK)
     assert html.count(DAY2_OHORI_OLD) == 1, '大濠公園連結數量 %d' % html.count(DAY2_OHORI_OLD)
     html = html.replace(DAY2_OHORI_OLD, DAY2_OHORI_NEW)
+    assert html.count(DAY3_MAP_ANCHOR) == 1, '太宰府地圖錨點數量 %d' % html.count(DAY3_MAP_ANCHOR)
+    html = html.replace(DAY3_MAP_ANCHOR, DAY3_MAP_ANCHOR + DAY3_STARBUCKS)
     return html
 
 if __name__ == '__main__':
