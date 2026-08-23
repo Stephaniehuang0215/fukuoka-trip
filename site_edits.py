@@ -140,6 +140,7 @@ _OMIYAGE = [
     ('omiyage-sugarbutter',  '甘王草莓奶油夾心餅乾', ''),
     ('omiyage-parapara',     '福太郎 明太子香鬆', ''),
     ('omiyage-torimon',      '明月堂 博多通饅頭', ''),
+    ('omiyage-agesen',       'YAMAYA 明太子炸仙貝', ''),
     ('omiyage-chikushimochi','如水庵 筑紫麻糬', 'grid-column:1/-1;'),   # 這張很寬，讓它獨占一整列
 ]
 SOUV_PHOTOS = ('\n        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));'
