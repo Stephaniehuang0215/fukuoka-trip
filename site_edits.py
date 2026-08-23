@@ -160,6 +160,41 @@ TORIMON = [('<h4>通りもん</h4>', '<h4>通明月</h4>'),
            ('通りもん饅頭', '通明月饅頭'),
            ('福岡最具代表性的伴手禮饅頭', '福岡最具代表性的伴手禮饅頭')]
 
+# 購物分頁：把「柳川鰻魚相關商品」那格換成唐吉訶德（生活／美妝用品）
+_MAP_TENJIN = ('https://www.google.com/maps/search/?api=1&amp;query='
+               '%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86+'
+               '%E7%A6%8F%E5%B2%A1%E5%A4%A9%E7%A5%9E%E6%9C%AC%E5%BA%97')
+_MAP_NAKASU = ('https://www.google.com/maps/search/?api=1&amp;query='
+               '%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86+'
+               '%E4%B8%AD%E6%B4%B2%E5%BA%97+%E7%A6%8F%E5%B2%A1')
+
+# 注意：site_edits 在 convert.py 的 px→rem 轉換「之前」執行，所以錨點要用 px
+DONKI_OLD = ('<div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);'
+             'background:var(--color-surface);">\n          '
+             '<div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;'
+             'color:var(--color-accent);margin-bottom:6px;">食物類</div>\n'
+             '          <h4>柳川鰻魚相關商品</h4>\n'
+             '          <p style="font-size:13px;opacity:0.8;">鰻魚醬汁、鰻魚派等加工商品，'
+             '適合喜歡鰻魚飯的人買回家回味。</p>')
+
+DONKI_NEW = """<div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);grid-column:1/-1;">
+          <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:6px;">生活／美妝用品</div>
+          <h4>Donki 唐吉訶德</h4>
+          <ul style="margin:var(--space-2) 0 0;padding-left:1.1em;font-size:13px;opacity:0.85;line-height:1.75;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%%),1fr));gap:0 var(--space-6);">
+            <li style="margin-bottom:6px;"><b>福岡天神本店</b>：規模最大、24小時營業，從 B1 到高樓層商品最齊全。<br>福岡中央區今泉1-20-17　<a href="%s" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
+            <li><b>中洲店</b>：鄰近中洲屋台區，深夜逛街或吃完宵夜順路採買非常方便。<br>福岡博多區中洲3-7-24　<a href="%s" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
+          </ul>
+          <div style="margin-top:var(--space-3);padding:var(--space-3);border-radius:calc(var(--radius-lg)*0.9);background:var(--color-accent-100);color:var(--color-accent-800);font-size:12px;line-height:1.75;">
+            <div style="font-weight:600;margin-bottom:4px;">🎟 電子版優惠券</div>
+            購物滿額結帳時出示手機畫面，即可享免稅 10%%＋額外最高 7%% 折扣，結帳時直接現折。<br>
+            <a href="https://japanportal.donki-global.com/coupon/?ptcd=0076000203" target="_blank" rel="noopener" style="%s">開啟優惠券 →</a>
+          </div>
+          <div>
+            <a href="https://www.funliday.com/posts/donki-best40/" target="_blank" rel="noopener" style="%s">購物參考 1 →</a>
+            <a href="https://blog.eztravel.com.tw/japan-donki-coupon/" target="_blank" rel="noopener" style="%s">購物參考 2 →</a>
+          </div>""" % (_MAP_TENJIN, _MAP, _MAP_NAKASU, _MAP,
+                       _MAP, _SOUV_LINK, _SOUV_LINK + 'margin-left:var(--space-4);')
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -192,6 +227,8 @@ def apply(html):
     html = html.replace(SOUV_ANCHOR, SOUV_BLOCK.replace('\n      </div>\n\n      ',
                                                       SOUV_PHOTOS + '\n      </div>\n\n      ')
                         + SOUV_ANCHOR)
+    assert html.count(DONKI_OLD) == 1, '唐吉訶德錨點數量 %d' % html.count(DONKI_OLD)
+    html = html.replace(DONKI_OLD, DONKI_NEW)
     for _a, _b in TORIMON:
         html = html.replace(_a, _b)
     return html
