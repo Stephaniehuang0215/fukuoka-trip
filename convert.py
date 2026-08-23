@@ -84,6 +84,10 @@ body = body.replace('https://torius.jp/',
 for _bad, _good in [('<a href="https://zh.wikipedia.org/w/index.php?title=%E6%B0%B4%E7%82%8A&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener" style="color:var(--color-accent-700);">水炊</a>', '水炊'), ('<a href="https://www.gltjp.com/zh-hant/summary/area/kanto/" target="_blank" rel="noopener" style="color:var(--color-accent-2-900);">關東</a>', '關東')]:
     body = body.replace(_bad, _good)
 
+# Day1 宵夜那格（友都八喜／中洲屋台）原本沒有連結，站主指定加上
+_night = '<p style="opacity:0.85;">體力還夠的話，可以走去中洲川端的屋台街，坐在路邊攤吃碗豚骨拉麵配啤酒；想早點休息的話，友都八喜（Yodobashi）樓上超市也有現成熟食、水果和啤酒，回飯店配著吃也很滿足。</p>'
+body = body.replace(_night, _night + '\n          <a href="https://almablog.tw/blog/post/yodobashi-hakata" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);font-size:12px;color:var(--color-accent-700);text-decoration:none;">了解更多 →</a>')
+
 assert '{{' not in body, '仍有未轉換的 binding: ' + str(re.findall(r'\{\{[^}]*\}\}', body)[:5])
 assert 'image-slot' not in body and 'sc-if' not in body
 
