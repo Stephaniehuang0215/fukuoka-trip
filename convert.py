@@ -122,9 +122,9 @@ head = '''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9C%88%3C/text%3E%3C/svg%3E">
 <script>/* 在畫面繪製前就套上記住的字級，否則每次進站會先看到小字再跳大 */
-(function(){{try{{var S=[100,120,140,160,180],i=parseInt(localStorage.getItem('fukuoka.fontStep'),10);
+(function(){{try{{var S=[120,140,160,180,200],i=parseInt(localStorage.getItem('fukuoka.fontStep'),10);
 document.documentElement.style.fontSize=(S[(i>=0&&i<S.length)?i:2])+'%';}}catch(e){{
-document.documentElement.style.fontSize='140%';}}}})();</script>
+document.documentElement.style.fontSize='160%';}}}})();</script>
 <link rel="stylesheet" href="css/styles.css?v={h_styles}">
 <link rel="stylesheet" href="css/site.css?v={h_site}">
 </head>

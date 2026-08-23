@@ -33,6 +33,14 @@
 [data-go] { transition: transform .15s ease, box-shadow .15s ease; }
 div[data-go]:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
+/* ── 文字卡片不吃固定高度 ──
+   設計稿在 Day2 / Day3 兩張卡片寫死了 px 高度（388px、356px）。那是照「當時的字級」
+   量出來的，字一放大內容就滿出卡片、壓到下一個區塊。文字高度本來就該由內容決定。 */
+.tab-panel .rwd-2col > div { height: auto !important; width: auto !important; }
+/* 格線子項目預設 min-width:auto，內容太寬時不肯縮，會把版面推出畫面 */
+.tab-panel .rwd-2col > * { min-width: 0; }
+.tab-panel .img-slot { max-width: 100%; }
+
 /* ── 圖片框 ─────────────────────────────────────────────── */
 .img-slot {
   position: relative;
@@ -68,9 +76,6 @@ div[data-go]:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); 
   .rwd-2col { grid-template-columns: 1fr !important; }
   /* 設計稿有幾張卡片寫死了 px 寬高（493px / 421px…），窄螢幕會把版面撐出畫面。
      手機上一律改成自動，讓內容自己決定高度。 */
-  .rwd-2col > div { width: auto !important; height: auto !important; }
-  .tab-panel [style*="width:"] > * { min-width: 0; }
-  .rwd-2col > * { min-width: 0; }
   h1 { font-size: 1.75rem !important; }
   h2 { font-size: 1.375rem !important; }
   .img-slot { width: 100% !important; height: auto !important; max-height: 70vh; }
