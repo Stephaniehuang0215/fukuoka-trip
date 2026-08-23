@@ -138,9 +138,10 @@ _OMIYAGE = [
     ('omiyage-umegaemochi',  'YASUTAKE 梅枝餅', ''),
     ('omiyage-hiyoko',       'ひよ子家族（小雞饅頭）', ''),
     ('omiyage-sugarbutter',  '甘王草莓奶油夾心餅乾', ''),
+    ('omiyage-parapara',     'ぱらぱらめんたい（明太子香鬆）', ''),
     ('omiyage-chikushimochi','如水庵 筑紫麻糬', 'grid-column:1/-1;'),   # 這張很寬，讓它獨占一整列
 ]
-SOUV_PHOTOS = ('\n        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));'
+SOUV_PHOTOS = ('\n        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));'
                'gap:var(--space-3);margin-top:var(--space-4);">\n'
                + ''.join(
     '          <figure class="img-slot" data-slot="%s" data-src="assets/%s.jpg" data-fit="contain"'
@@ -153,6 +154,11 @@ SOUV_MENTAIKO_ANCHOR = ('<h4>明太子</h4>\n          <p style="font-size:13px;
                         'ふくや、椒房庵都是名店，車站B1與機場都買得到，適合分送親友。</p>')
 SOUV_MENTAIKO_LINK = ('\n          <a href="https://www.funliday.com/posts/fukuoka-omiyage-top-20/" '
                       'target="_blank" rel="noopener" style="%s">了解更多 →</a>' % _SOUV_LINK)
+
+# 站主要求：全站統一寫成「通明月」
+TORIMON = [('<h4>通りもん</h4>', '<h4>通明月</h4>'),
+           ('通りもん饅頭', '通明月饅頭'),
+           ('福岡最具代表性的伴手禮饅頭', '福岡最具代表性的伴手禮饅頭')]
 
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
@@ -186,6 +192,8 @@ def apply(html):
     html = html.replace(SOUV_ANCHOR, SOUV_BLOCK.replace('\n      </div>\n\n      ',
                                                       SOUV_PHOTOS + '\n      </div>\n\n      ')
                         + SOUV_ANCHOR)
+    for _a, _b in TORIMON:
+        html = html.replace(_a, _b)
     return html
 
 if __name__ == '__main__':

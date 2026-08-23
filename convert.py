@@ -92,6 +92,21 @@ body = body.replace(_night, _night + '\n          <a href="https://almablog.tw/b
 import site_edits
 body = site_edits.apply(body)
 
+# ── 字級系統 ──
+# 把「內文區」（#zoom-wrap 之後）的字級從 px/pt 換成 rem，這樣就能用根字級一次調整全站。
+# 導覽列刻意不換，維持 px：讀者按放大要的是內文變大，不是選單變大（選單變大會擠爆窄螢幕）。
+def _px_to_rem(m):
+    val = float(m.group(2))
+    if m.group(3) == 'pt':
+        val *= 4 / 3          # 1pt = 4/3 px
+    return '%s%grem' % (m.group(1), round(val / 16, 4))
+
+_split = '<div id="zoom-wrap">'
+assert body.count(_split) == 1
+_nav, _content = body.split(_split, 1)
+_content = re.sub(r'(font-size:\s*)([0-9.]+)(px|pt)', _px_to_rem, _content)
+body = _nav + _split + _content
+
 assert '{{' not in body, '仍有未轉換的 binding: ' + str(re.findall(r'\{\{[^}]*\}\}', body)[:5])
 assert 'image-slot' not in body and 'sc-if' not in body
 
@@ -106,6 +121,10 @@ head = '''<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9C%88%3C/text%3E%3C/svg%3E">
+<script>/* 在畫面繪製前就套上記住的字級，否則每次進站會先看到小字再跳大 */
+(function(){{try{{var S=[100,120,140,160,180],i=parseInt(localStorage.getItem('fukuoka.fontStep'),10);
+document.documentElement.style.fontSize=(S[(i>=0&&i<S.length)?i:2])+'%';}}catch(e){{
+document.documentElement.style.fontSize='140%';}}}})();</script>
 <link rel="stylesheet" href="css/styles.css?v={h_styles}">
 <link rel="stylesheet" href="css/site.css?v={h_site}">
 </head>

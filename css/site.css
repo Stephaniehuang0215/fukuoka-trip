@@ -57,7 +57,7 @@ div[data-go]:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); 
 }
 .img-slot.is-empty::after {
   content: "🖼 " attr(data-placeholder);
-  font-size: 13px;
+  font-size: 0.8125rem;
   padding: 0 var(--space-3);
   text-align: center;
   color: color-mix(in srgb, var(--color-text) 52%, transparent);
@@ -66,8 +66,13 @@ div[data-go]:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); 
 /* ── 響應式 ─────────────────────────────────────────────── */
 @media (max-width: 720px) {
   .rwd-2col { grid-template-columns: 1fr !important; }
-  h1 { font-size: 32px !important; }
-  h2 { font-size: 24px !important; }
+  /* 設計稿有幾張卡片寫死了 px 寬高（493px / 421px…），窄螢幕會把版面撐出畫面。
+     手機上一律改成自動，讓內容自己決定高度。 */
+  .rwd-2col > div { width: auto !important; height: auto !important; }
+  .tab-panel [style*="width:"] > * { min-width: 0; }
+  .rwd-2col > * { min-width: 0; }
+  h1 { font-size: 1.75rem !important; }
+  h2 { font-size: 1.375rem !important; }
   .img-slot { width: 100% !important; height: auto !important; max-height: 70vh; }
 }
 

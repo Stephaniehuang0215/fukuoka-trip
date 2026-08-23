@@ -5,11 +5,9 @@
   'use strict';
 
   var TABS = ['home','day1','day2','day3','day4','day5','food','souvenir','map','info'];
-  var ZOOM_MIN = 0.8, ZOOM_MAX = 1.3, ZOOM_KEY = 'fukuoka.zoom';
 
   var panels  = document.querySelectorAll('.tab-panel');
   var navBtns = document.querySelectorAll('.nav-btn');
-  var wrap    = document.getElementById('zoom-wrap');
   var label   = document.getElementById('zoom-label');
 
   /* ── 分頁 ── */
@@ -40,21 +38,38 @@
 
   window.addEventListener('hashchange', function () { setTab(location.hash.slice(1), false); });
 
-  /* ── 字級縮放 ── */
-  var zoom = parseFloat(localStorage.getItem(ZOOM_KEY));
-  if (!(zoom >= ZOOM_MIN && zoom <= ZOOM_MAX)) zoom = 1;
+  /* ── 字級 ──
+     五段：小 / 中小 / 中 / 中大 / 大，**預設是中間那段**，不是最小的。
+     原因：絕大多數人不會主動去按放大鈕，預設給最小的等於把小字丟給多數讀者。
+     只改根字級（rem），版面寬度與導覽列都不動——放大的是內文，不是選單。 */
+  var STEPS  = [100, 120, 140, 160, 180];   /* 根字級百分比 */
+  var LABELS = ['小', '中小', '中', '中大', '大'];
+  var DEFAULT_STEP = 2;                     /* 五段的中間段 */
+  var FONT_KEY = 'fukuoka.fontStep';
 
-  function applyZoom() {
-    if (wrap) wrap.style.zoom = zoom;
-    if (label) label.textContent = Math.round(zoom * 100) + '%';
-    try { localStorage.setItem(ZOOM_KEY, String(zoom)); } catch (err) {}
+  var fstep = parseInt(localStorage.getItem(FONT_KEY), 10);
+  if (!(fstep >= 0 && fstep < STEPS.length)) fstep = DEFAULT_STEP;
+
+  var zin  = document.getElementById('zoom-in');
+  var zout = document.getElementById('zoom-out');
+
+  function applyFont() {
+    document.documentElement.style.fontSize = STEPS[fstep] + '%';
+    if (label) label.textContent = LABELS[fstep];
+    /* 到頂／到底時把按鈕變灰，讀者才知道「按不動不是壞掉，是到底了」 */
+    if (zout) { zout.disabled = fstep === 0; zout.style.opacity = fstep === 0 ? 0.35 : 1; }
+    if (zin)  { zin.disabled = fstep === STEPS.length - 1; zin.style.opacity = fstep === STEPS.length - 1 ? 0.35 : 1; }
+    try { localStorage.setItem(FONT_KEY, String(fstep)); } catch (err) {}
   }
-  function step(d) { zoom = +Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoom + d)).toFixed(1); applyZoom(); }
+  function bumpFont(d) {
+    var next = Math.min(STEPS.length - 1, Math.max(0, fstep + d));
+    if (next === fstep) return;
+    fstep = next;
+    applyFont();
+  }
 
-  var zin = document.getElementById('zoom-in'), zout = document.getElementById('zoom-out');
-  if (zin)  zin.addEventListener('click',  function () { step(0.1); });
-  if (zout) zout.addEventListener('click', function () { step(-0.1); });
-
+  if (zin)  zin.addEventListener('click',  function () { bumpFont(1); });
+  if (zout) zout.addEventListener('click', function () { bumpFont(-1); });
 
   /* ── 圖片載入 ──
      只載「目前這個分頁」的圖，切過去才載，不然一開頁就要吞掉好幾 MB。
@@ -91,6 +106,6 @@
     });
   }
 
-  applyZoom();
+  applyFont();
   setTab(location.hash.slice(1), false);
 })();
