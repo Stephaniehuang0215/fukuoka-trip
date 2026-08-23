@@ -133,6 +133,27 @@ SOUV_BLOCK = """<div style="padding:var(--space-4);border-radius:calc(var(--radi
 
       """ % (_SOUV_LINK, _SOUV_LINK + 'margin-left:var(--space-4);')
 
+# 購物分頁「伴手禮」區塊下方的伴手禮照片牆
+_OMIYAGE = [
+    ('omiyage-umegaemochi',  'YASUTAKE 梅枝餅', ''),
+    ('omiyage-hiyoko',       'ひよ子家族（小雞饅頭）', ''),
+    ('omiyage-sugarbutter',  '甘王草莓奶油夾心餅乾', ''),
+    ('omiyage-chikushimochi','如水庵 筑紫麻糬', 'grid-column:1/-1;'),   # 這張很寬，讓它獨占一整列
+]
+SOUV_PHOTOS = ('\n        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));'
+               'gap:var(--space-3);margin-top:var(--space-4);">\n'
+               + ''.join(
+    '          <figure class="img-slot" data-slot="%s" data-src="assets/%s.jpg" data-fit="contain"'
+    ' data-placeholder="%s" style="width:100%%;background:var(--color-bg);border-radius:16px;%s"></figure>\n'
+    % (slot, slot, cap, extra) for slot, cap, extra in _OMIYAGE)
+               + '        </div>')
+
+# 購物分頁：明太子卡片加上「了解更多」
+SOUV_MENTAIKO_ANCHOR = ('<h4>明太子</h4>\n          <p style="font-size:13px;opacity:0.8;">'
+                        'ふくや、椒房庵都是名店，車站B1與機場都買得到，適合分送親友。</p>')
+SOUV_MENTAIKO_LINK = ('\n          <a href="https://www.funliday.com/posts/fukuoka-omiyage-top-20/" '
+                      'target="_blank" rel="noopener" style="%s">了解更多 →</a>' % _SOUV_LINK)
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -160,7 +181,11 @@ def apply(html):
     assert html.count(DAY3_UNAGI_LINK_ANCHOR) == 1, '鰻魚飯連結錨點數量 %d' % html.count(DAY3_UNAGI_LINK_ANCHOR)
     html = html.replace(DAY3_UNAGI_LINK_ANCHOR, DAY3_UNAGI_LINK_ANCHOR + DAY3_UNAGI_SHOPS)
     assert html.count(SOUV_ANCHOR) == 1, '購物頁錨點數量 %d' % html.count(SOUV_ANCHOR)
-    html = html.replace(SOUV_ANCHOR, SOUV_BLOCK + SOUV_ANCHOR)
+    assert html.count(SOUV_MENTAIKO_ANCHOR) == 1, '明太子錨點數量 %d' % html.count(SOUV_MENTAIKO_ANCHOR)
+    html = html.replace(SOUV_MENTAIKO_ANCHOR, SOUV_MENTAIKO_ANCHOR + SOUV_MENTAIKO_LINK)
+    html = html.replace(SOUV_ANCHOR, SOUV_BLOCK.replace('\n      </div>\n\n      ',
+                                                      SOUV_PHOTOS + '\n      </div>\n\n      ')
+                        + SOUV_ANCHOR)
     return html
 
 if __name__ == '__main__':
