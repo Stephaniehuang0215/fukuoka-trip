@@ -108,6 +108,17 @@ DAY3_BOATS = """<div style="padding:var(--space-4);border-radius:calc(var(--radi
 
       """
 
+# Day3 鰻魚飯區塊補上分店資訊與 Google 地圖連結
+DAY3_UNAGI_LINK_ANCHOR = ('<a href="https://bobbytravel.tw/motoyoshiya/" target="_blank" rel="noopener" '
+                          'style="%s">了解更多 →</a>' % LINK_STYLE)
+_MAP = 'color:var(--color-accent-700);text-decoration:underline;text-underline-offset:3px;'
+DAY3_UNAGI_SHOPS = """
+        <ul style="margin:var(--space-3) 0 0;padding-left:1.1em;font-size:13px;opacity:0.85;line-height:1.75;">
+          <li style="margin-bottom:6px;"><b>元祖本吉屋 本店</b>：福岡縣柳川市旭町69番地（營業至七點）　<a href="https://maps.app.goo.gl/EVdKosKaBxMJVqYX9" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
+          <li style="margin-bottom:6px;"><b>元祖本吉屋 岩田屋店</b>：福岡市中央區天神2-5-35，岩田屋本店 B2（營業至八點）　<a href="https://maps.app.goo.gl/EhSGnrZndYe9pjps8" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
+          <li><b>六騎鰻魚飯</b>：Google Map 上擁有 4.2 顆星的高分好評，更是許多在地人的私藏名單。</li>
+        </ul>""" % (_MAP, _MAP)
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -132,6 +143,8 @@ def apply(html):
     html = html.replace(DAY3_YANAGAWA_ANCHOR, DAY3_YANAGAWA_ANCHOR + DAY3_YANAGAWA_ADD + DAY3_YANAGAWA_NOTE)
     assert html.count(DAY3_UNAGI_ANCHOR) == 1, '鰻魚飯錨點數量 %d' % html.count(DAY3_UNAGI_ANCHOR)
     html = html.replace(DAY3_UNAGI_ANCHOR, DAY3_BOATS + DAY3_UNAGI_ANCHOR)
+    assert html.count(DAY3_UNAGI_LINK_ANCHOR) == 1, '鰻魚飯連結錨點數量 %d' % html.count(DAY3_UNAGI_LINK_ANCHOR)
+    html = html.replace(DAY3_UNAGI_LINK_ANCHOR, DAY3_UNAGI_LINK_ANCHOR + DAY3_UNAGI_SHOPS)
     return html
 
 if __name__ == '__main__':
