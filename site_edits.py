@@ -73,6 +73,14 @@ DAY1_KUSHIDA_ADD = ('\n          <a href="https://bobbytravel.tw/kushida-shrine/
                     % LINK_STYLE.replace('display:inline-flex;', 'display:flex;width:fit-content;')
                                 .replace('margin-top:var(--space-2);', 'margin-top:6px;'))
 
+# Day3 柳川遊船「了解更多」下方再加一條連結
+DAY3_YANAGAWA_ANCHOR = ('<a href="https://www.yanagawa-net.com/" target="_blank" rel="noopener" '
+                        'style="%s">了解更多 →</a>' % LINK_STYLE)
+DAY3_YANAGAWA_ADD = ('\n          <a href="https://bobbytravel.tw/yanagawa/" target="_blank" rel="noopener" '
+                     'style="%s">7大船家比較＆跳船表演攻略 →</a>'
+                     % LINK_STYLE.replace('display:inline-flex;', 'display:flex;width:fit-content;')
+                                 .replace('margin-top:var(--space-2);', 'margin-top:6px;'))
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -93,6 +101,8 @@ def apply(html):
     html = html.replace(DAY4_TSUKEMEN_ANCHOR, DAY4_TSUKEMEN_ANCHOR + DAY4_TSUKEMEN_ADD)
     assert html.count(DAY1_KUSHIDA_ANCHOR) == 1, '櫛田神社錨點數量 %d' % html.count(DAY1_KUSHIDA_ANCHOR)
     html = html.replace(DAY1_KUSHIDA_ANCHOR, DAY1_KUSHIDA_ANCHOR + DAY1_KUSHIDA_ADD)
+    assert html.count(DAY3_YANAGAWA_ANCHOR) == 1, '柳川遊船錨點數量 %d' % html.count(DAY3_YANAGAWA_ANCHOR)
+    html = html.replace(DAY3_YANAGAWA_ANCHOR, DAY3_YANAGAWA_ANCHOR + DAY3_YANAGAWA_ADD)
     return html
 
 if __name__ == '__main__':
