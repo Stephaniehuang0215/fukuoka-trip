@@ -122,14 +122,16 @@ DAY3_UNAGI_SHOPS = """
 # 購物分頁：在「四大購物天堂」與食物類卡片之間插入「伴手禮」區塊
 SOUV_ANCHOR = ('<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));'
                'gap:var(--space-4);">')
+_SOUV_LINK = LINK_STYLE.replace('margin-top:var(--space-2);', 'margin-top:var(--space-3);')
 SOUV_BLOCK = """<div style="padding:var(--space-4);border-radius:calc(var(--radius-lg)*1.15);background:var(--color-surface);margin-bottom:var(--space-6);">
         <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8px;">伴手禮</div>
         <p style="opacity:0.85;">福岡伴手禮以「明太子」文化最具代表性，福岡限定品項包含：明太子仙貝、明太子零食、博多通饅頭、筑紫餅等。加工零食類（明太子仙貝、明太子餅乾、明太子海苔，常溫保存期限長，最適合攜帶）；以及明太子醬料與調味品（真空包裝，可冷藏或冷凍）。品牌推薦方面，やまや（Yamaya）、ふくや（Fukuya）與かわ屋為福岡老字號明太子品牌。</p>
         <p style="opacity:0.85;margin:0;">福岡伴手禮最便利的一站式採購地點為博多車站地下街「博多デイトス（Hakata DEITOS）」與「マイング（Maing／明街）」，集中了明太子、通明月、仙貝蝦餅等主要品牌，選擇最齊全。博多運河城與天神地下街也有豐富選擇。</p>
         <a href="https://www.funliday.com/posts/fukuoka-omiyage-top-20/" target="_blank" rel="noopener" style="%s">伴手禮攻略 →</a>
+        <a href="https://kyushu.letsgojp.com/archives/498409/" target="_blank" rel="noopener" style="%s">了解更多 →</a>
       </div>
 
-      """ % LINK_STYLE.replace('margin-top:var(--space-2);', 'margin-top:var(--space-3);')
+      """ % (_SOUV_LINK, _SOUV_LINK + 'margin-left:var(--space-4);')
 
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
