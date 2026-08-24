@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import re
 LINK_STYLE = ('display:inline-flex;align-items:center;gap:4px;margin-top:var(--space-2);'
               'font-size:12px;color:var(--color-accent-700);text-decoration:none;')
 
@@ -227,6 +228,47 @@ MALLS_ADD = ('\n        <a href="https://gogojp.tw/coupon-all/" target="_blank" 
              'margin-left:var(--space-4);font-size:12px;color:var(--color-accent-700);'
              'text-decoration:none;">下載各種商場優惠劵 →</a>')
 
+# ── Day3 / Day4 改為包車，並重排 Day4 行程 ──
+CHARTER = [
+    ('租車出遊・太宰府梅枝餅・柳川鰻魚飯', '包車出遊・太宰府梅枝餅・柳川鰻魚飯'),
+    ('租車出遊・沾麵午餐・唐戶市場海鮮',   '包車出遊・唐戶市場海鮮・親親動物園'),
+    ('🚗 今日租車出遊',                   '🚐 今日包車出遊'),
+    ('交通與租車提醒',                     '交通與包車提醒'),
+    ('Day3（太宰府、柳川）與Day4（門司港、TORIUS動物園）距市區較遠且景點分散，安排租車自駕較有彈性。',
+     'Day3（太宰府、柳川）與Day4（門司港、下關唐戶市場）距市區較遠、景點分散且跨縣，安排包車最省力——'
+     '長輩不用久等大眾運輸，也不必自己開車。'),
+    ('建議：租車當天在飯店附近取還車、日本靠左行駛需留意、國際駕照與台灣駕照日文譯本都要隨身攜帶、'
+     '市區停車費不便宜可多利用景點附設停車場。',
+     '建議：出發前與司機確認每站的上下車地點與等候方式，行程有變動盡早告知。'
+     'Day4 會從福岡經北九州跨到山口縣下關，記得預留車程時間；長輩上下車較慢，可請司機盡量停在景點入口附近。'),
+]
+
+def _day4_block(body, kicker, h3):
+    """取出 Day4 裡某個整張卡片（卡片內沒有巢狀 div，所以配到第一個 </div> 即可）"""
+    pat = re.compile(
+        r'<div style="padding:var\(--space-4\);[^"]*background:var\(--color-surface\);[^"]*">\s*'
+        r'<div style="font-size:10px;[^"]*">' + re.escape(kicker) + r'</div>\s*'
+        r'<h3>' + re.escape(h3) + r'</h3>(?:(?!</div>).)*</div>', re.S)
+    m = pat.search(body)
+    assert m, 'Day4 找不到區塊：' + h3
+    return m.group(0)
+
+# Day4 動物園卡片補上「或改成下關水族館」的替代方案
+ZOO_ANCHOR = ('<a href="https://www.biopark.co.jp/toriuszoo/" target="_blank" rel="noopener" '
+              'style="%s">了解更多 →</a>' % LINK_STYLE)
+_KAIKYOKAN = ('https://www.google.com/maps/search/?api=1&amp;query='
+              '%E4%B8%8B%E9%96%A2%E5%B8%82%E7%AB%8B%E3%81%97%E3%82%82%E3%81%AE%E3%81%9B%E3%81%8D'
+              '%E6%B0%B4%E6%97%8F%E9%A4%A8%E6%B5%B7%E9%9F%BF%E9%A4%A8')
+ZOO_ALT = ('\n          <div style="margin-top:var(--space-3);padding:var(--space-3);'
+           'border-radius:calc(var(--radius-lg)*0.9);background:var(--color-accent-2-100);'
+           'color:var(--color-accent-2-900);font-size:12px;line-height:1.75;">'
+           '<div style="font-weight:600;margin-bottom:4px;">🐧 替代方案：下關水族館「海響館」</div>'
+           '距唐戶市場只有 243 公尺、走路 5 分鐘，吃完海鮮直接走過去就到，'
+           '不必再拉回福岡近郊。以河豚與企鵝館聞名，室內全程吹冷氣，夏天帶長輩小孩都輕鬆。'
+           '<br><a href="' + _KAIKYOKAN + '" target="_blank" rel="noopener" '
+           'style="color:var(--color-accent-2-900);text-decoration:underline;'
+           'text-underline-offset:3px;">Google 地圖 →</a></div>')
+
 def apply(html):
     assert html.count(DAY2_ANCHOR) == 1, 'Day2 錨點數量 %d' % html.count(DAY2_ANCHOR)
     assert html.count(DAY3_ANCHOR) == 1, 'Day3 錨點數量 %d' % html.count(DAY3_ANCHOR)
@@ -267,6 +309,23 @@ def apply(html):
     html = html.replace(MALLS_ANCHOR, MALLS_ANCHOR + MALLS_ADD)
     assert html.count(HOTEL_ANCHOR) == 1, '飯店錨點數量 %d' % html.count(HOTEL_ANCHOR)
     html = html.replace(HOTEL_ANCHOR, HOTEL_NEW)
+    assert html.count(ZOO_ANCHOR) == 1, '動物園錨點數量 %d' % html.count(ZOO_ANCHOR)
+    html = html.replace(ZOO_ANCHOR, ZOO_ANCHOR + ZOO_ALT)
+
+    # 租車 -> 包車
+    for _a, _b in CHARTER:
+        assert html.count(_a) >= 1, '包車替換找不到：' + _a[:20]
+        html = html.replace(_a, _b)   # 「今日租車出遊」Day3、Day4 各一個，全部換掉
+
+    # Day4 重排：門司港(上午) -> 唐戶市場(午餐) -> 動物園(下午) -> 沾麵(晚餐)
+    _lunch = _day4_block(html, '正餐．午餐', '天神PARCO．麵屋間虎（沾麵）')
+    _kara  = _day4_block(html, '宵夜／晚餐', '北九州唐戶市場（僅週末開放）')
+    _lunch_new = _lunch.replace('>正餐．午餐</div>', '>正餐．晚餐</div>')
+    _kara_new  = _kara.replace('>宵夜／晚餐</div>', '>正餐．午餐</div>') \
+                      .replace('北九州唐戶市場（僅週末開放）', '下關唐戶市場（僅週末開放）')
+    html = html.replace(_lunch, '@@DAY4_A@@').replace(_kara, '@@DAY4_B@@')
+    html = html.replace('@@DAY4_A@@', _kara_new).replace('@@DAY4_B@@', _lunch_new)
+
     for _a, _b in TORIMON:
         html = html.replace(_a, _b)
     return html
