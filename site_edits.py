@@ -117,7 +117,7 @@ DAY3_UNAGI_SHOPS = """
         <p style="margin:var(--space-3) 0 0;font-size:13px;opacity:0.85;">擁有超過三百年歷史的「元祖本吉屋」，被公認為是柳川鰻魚蒸籠飯的發祥地。</p>
         <ul style="margin:var(--space-2) 0 0;padding-left:1.1em;font-size:13px;opacity:0.85;line-height:1.75;">
           <li style="margin-bottom:6px;"><b>元祖本吉屋 本店</b>：福岡縣柳川市旭町69番地（營業至七點）　<a href="https://maps.app.goo.gl/EVdKosKaBxMJVqYX9" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
-          <li><b>若松屋</b>：創業超過160年的超人氣排隊名店。醬汁甜而不膩，魚肉軟嫩入口即化，店內還擁有優雅的傳統日式庭園景致。<br>福岡縣柳川市沖端町26（14:30–17:00 午休）　<a href="https://maps.app.goo.gl/mYUwYvaMtzf88RRN8" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
+          <li><b>若松屋</b>：創業超過160年的超人氣排隊名店。醬汁甜而不膩，魚肉軟嫩入口即化，店內還擁有優雅的傳統日式庭園景致。<br>福岡縣柳川市沖端町26　11:00–15:30（14:30 截止收客）／17:00–20:00（最後點餐 19:15）　公休：每週三、每月第1・3個週二<br><b>預約</b>：平日可事先電話預約（0944-72-3163），<b>週末假日與當天恕不接受預約</b>，現場抽號碼牌、尖峰時段可能等一小時。8/28 是週五，建議提前打電話訂位。　<a href="https://maps.app.goo.gl/mYUwYvaMtzf88RRN8" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
         </ul>""" % (_MAP, _MAP)
 
 # 購物分頁：在「四大購物天堂」與食物類卡片之間插入「伴手禮」區塊
