@@ -117,7 +117,7 @@ DAY3_UNAGI_SHOPS = """
         <p style="margin:var(--space-3) 0 0;font-size:13px;opacity:0.85;">擁有超過三百年歷史的「元祖本吉屋」，被公認為是柳川鰻魚蒸籠飯的發祥地。</p>
         <ul style="margin:var(--space-2) 0 0;padding-left:1.1em;font-size:13px;opacity:0.85;line-height:1.75;">
           <li style="margin-bottom:6px;"><b>元祖本吉屋 本店</b>：福岡縣柳川市旭町69番地（營業至七點）　<a href="https://maps.app.goo.gl/EVdKosKaBxMJVqYX9" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
-          <li><b>元祖本吉屋 岩田屋店</b>：福岡市中央區天神2-5-35，岩田屋本店 B2（營業至八點）　<a href="https://maps.app.goo.gl/EhSGnrZndYe9pjps8" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
+          <li><b>若松屋</b>：創業超過160年的超人氣排隊名店。醬汁甜而不膩，魚肉軟嫩入口即化，店內還擁有優雅的傳統日式庭園景致。<br>福岡縣柳川市沖端町26（14:30–17:00 午休）　<a href="https://maps.app.goo.gl/mYUwYvaMtzf88RRN8" target="_blank" rel="noopener" style="%s">Google 地圖 →</a></li>
         </ul>""" % (_MAP, _MAP)
 
 # 購物分頁：在「四大購物天堂」與食物類卡片之間插入「伴手禮」區塊
