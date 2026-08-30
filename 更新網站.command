@@ -31,6 +31,28 @@ fail() {
 
 # ── 1. 準備檔案 ────────────────────────────────
 echo "▸ 1/4  準備檔案..."
+
+# 更新 CSS 快取版號。
+# 為什麼要這個：index.html 裡的 CSS 網址帶版號（css/site.css?v=a50bb111）。
+# 瀏覽器是「認網址」的，網址沒變就直接用電腦裡存的舊檔——
+# 所以改了 CSS 卻沒換版號的話，家人會看到舊樣式，還以為妳沒改。
+# 這段會重算版號（CSS 檔內容的 sha1 前 8 碼），CSS 沒改就什麼都不做。
+python3 - <<'PYEOF'
+import io, re, hashlib
+p = 'index.html'
+s = io.open(p, encoding='utf-8').read()
+def bump(m):
+    f = m.group(1)
+    return 'href="%s?v=%s"' % (f, hashlib.sha1(io.open(f, 'rb').read()).hexdigest()[:8])
+out = re.sub(r'href="(css/[a-z-]+\.css)(?:\?v=[0-9a-f]{8})?"', bump, s)
+if out != s:
+    io.open(p, 'w', encoding='utf-8').write(out)
+    print("  ✓ CSS 有改動，版號已更新")
+else:
+    print("  ✓ CSS 沒變，版號不用動")
+PYEOF
+[ $? -eq 0 ] || fail "更新 CSS 版號失敗"
+
 rm -rf dist && mkdir -p dist || fail "無法建立 dist 資料夾"
 cp index.html dist/ || fail "找不到 index.html"
 cp -R css js assets dist/ || fail "找不到 css / js / assets 資料夾"
