@@ -95,3 +95,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "HeadingNumerals", var(--font-heading);
 }
 
+
+/* ── 區塊之間的間距 ──
+   設計稿裡有些卡片漏寫了 margin-bottom，上下兩個區塊就會黏在一起（例如 Day4
+   的「唐戶市場」直接貼著下一張卡片）。這裡統一補上：同一個分頁裡相鄰的兩個
+   區塊，後面那個往上留一段間距。
+   CSS 的相鄰邊距會「取大值」而不是相加，所以原本已經有 margin-bottom 的區塊
+   間距不會變寬，只有原本黏在一起的會被撐開。 */
+.tab-panel > div > div + div { margin-top: var(--space-4); }
