@@ -33,6 +33,28 @@
 [data-go] { transition: transform .15s ease, box-shadow .15s ease; }
 div[data-go]:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
+/* ── 日文名稱／發音註記 ─────────────────────────────────── */
+.jp-name {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  margin: 0 0 var(--space-2);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-bg) 72%, white);
+  color: color-mix(in srgb, var(--color-text) 72%, transparent);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+.jp-name .jp-main {
+  font-weight: 600;
+  color: var(--color-accent-800);
+}
+.jp-name .jp-kana {
+  font-size: 0.78rem;
+}
+
 /* ── 文字卡片不吃固定高度 ──
    設計稿在 Day2 / Day3 兩張卡片寫死了 px 高度（388px、356px）。那是照「當時的字級」
    量出來的，字一放大內容就滿出卡片、壓到下一個區塊。文字高度本來就該由內容決定。 */
