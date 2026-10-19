@@ -11,7 +11,6 @@
 
 | 狀態 | 格子名稱 | 這格要放什麼 | 檔名存成 |
 |------|----------|--------------|----------|
-| ✅ 已有 | `hero-fukuoka` | 全家福照片 | `assets/hero-fukuoka.jpg` |
 | ✅ 已有 | `day1-kushida` | 櫛田神社照片 | `assets/day1-kushida.jpg` |
 | ✅ 已有 | `day2-ohori` | 大濠公園照片 | `assets/day2-ohori.jpg` |
 | ✅ 已有 | `day2-tower` | 福岡塔夜景照片 | `assets/day2-tower.jpg` |
