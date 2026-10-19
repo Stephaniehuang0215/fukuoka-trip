@@ -117,7 +117,7 @@ head = '''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>福岡家族旅遊 2026</title>
 <meta name="description" content="2026/08/26–08/30 福岡五天四夜家族行程：博多、大濠公園、太宰府、柳川、門司港，含美食、購物與實用資訊。">
-<meta name="robots" content="noindex">
+<link rel="canonical" href="https://fukuoka-trip-7d3.pages.dev/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9C%88%3C/text%3E%3C/svg%3E">

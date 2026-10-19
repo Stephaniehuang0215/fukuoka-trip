@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fukuoka-trip-7d3.pages.dev/sitemap.xml

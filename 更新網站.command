@@ -54,10 +54,9 @@ PYEOF
 [ $? -eq 0 ] || fail "更新 CSS 版號失敗"
 
 rm -rf dist && mkdir -p dist || fail "無法建立 dist 資料夾"
-cp index.html dist/ || fail "找不到 index.html"
+cp index.html robots.txt sitemap.xml dist/ || fail "找不到 index.html / robots.txt / sitemap.xml"
 cp -R css js assets dist/ || fail "找不到 css / js / assets 資料夾"
 rm -f dist/assets/README.md
-printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
 echo "  ✓ 共 $(find dist -type f | wc -l | tr -d ' ') 個檔案"
 echo ""
 
